@@ -2,52 +2,73 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TOMBOLA MBONGO V5 - Ta Moko, Zwa Ebele</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>TOMBOLA MBONGO - V5.2 FIX</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,-apple-system,sans-serif}
-body{background:#eef2f7;min-height:100vh;padding-bottom:100px}
-.header{background:#0d2a54;color:white;padding:22px 16px;border-radius:0 0 20px 20px}
-.header-top{display:flex;align-items:center;gap:12px}
-.voda{width:46px;height:46px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#0d2a54}
-.header h1{font-size:21px;font-weight:900}
-.card{background:white;margin:14px 12px;border-radius:18px;padding:16px;box-shadow:0 8px 24px rgba(13,42,84,.07)}
-.solde-val{font-size:44px;font-weight:900;color:#0d2a54;margin-top:8px}
-.btn-yellow{width:100%;background:#ffcc00;color:#0d2a54;border:none;padding:15px;border-radius:12px;font-weight:900;margin-top:12px}
-.btn-blue{width:100%;background:#0d2a54;color:white;border:none;padding:15px;border-radius:12px;font-weight:900;margin-top:10px;display:flex;justify-content:center;gap:8px}
-.btn-green{width:100%;background:#25D366;color:white;border:none;padding:13px;border-radius:12px;font-weight:900;margin-top:10px;display:flex;justify-content:center;gap:8px}
-.winner-box{background:#dff7e0;border-radius:14px;padding:14px;margin-top:12px;display:none;border:1.5px solid #b9e6bc}
-.winner-box.show{display:block}
-.members{display:flex;flex-wrap:wrap;margin:10px 0}
-.av{width:36px;height:36px;border-radius:50%;background:#0d2a54;color:white;display:flex;align-items:center;justify-content:center;font-weight:900;border:2px solid white;margin-left:-6px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+body{background:#eef2f7;padding-bottom:120px;-webkit-user-select:none;user-select:none}
+.header{background:#0d2a54;color:white;padding:20px;border-radius:0 0 18px 18px}
+.card{background:white;margin:12px;border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.solde{font-size:42px;font-weight:900;color:#0d2a54}
+.btn{width:100%;padding:14px;border:none;border-radius:12px;font-weight:900;margin-top:10px}
+.btn-y{background:#ffcc00;color:#0d2a54}
+.btn-b{background:#0d2a54;color:white}
+.btn-g{background:#25D366;color:white}
+.nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;display:flex;padding:10px 0;padding-bottom:env(safe-area-inset-bottom);z-index:99}
+.nav div{flex:1;text-align:center;font-size:11px;font-weight:700;color:#888}
+.nav div.active{color:#0d2a54}
+.page{display:none}.page.show{display:block}
+.av{display:inline-flex;width:34px;height:34px;background:#0d2a54;color:white;border-radius:50%;align-items:center;justify-content:center;font-weight:900;margin-left:-6px;border:2px solid white}
 .av:first-child{margin-left:0}.av.me{background:#ffcc00;color:#0d2a54}
-.progress{height:6px;background:#eef2f7;border-radius:10px;margin:8px 0;overflow:hidden}
-.progress-fill{height:100%;background:#ffcc00;transition:width .4s}
-.confetti{position:fixed;top:-10px;width:10px;height:10px;border-radius:2px;animation:fall 3s linear forwards;z-index:100}
-@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
-.nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #eef2f7;display:flex;justify-content:space-around;padding:10px 0 22px}
 </style>
 </head>
 <body>
-<div id="confettiRoot"></div>
-<div class="header"><div class="header-top"><div class="voda">₮</div><div><h1>TOMBOLA MBONGO</h1><p>Ta Moko, Zwa Ebele - M-Pesa Ready • <span id="time">19:05</span></p></div></div></div>
-<div class="card"><div style="display:flex;justify-content:space-between"><div style="color:#6b7a9a;font-size:11px;font-weight:800">💳 SOLDE DISPONIBLE</div><div style="border:1px solid #d1d9e6;padding:6px 10px;border-radius:10px;font-size:11px;font-weight:700;color:#0d2a54;text-align:center">M-Pesa<br><span style="color:#00b050">● Actif</span></div></div><div class="solde-val" id="solde">4000 CDF</div><div style="font-size:11px;color:#8a9bb5">Tape 2x pour reset · <span id="time2"></span></div><div style="display:flex;gap:8px;margin-top:12px"><input id="rechargeInput" placeholder="Montant M-Pesa" type="number" style="flex:1;padding:13px;border:1.5px solid #e3eaf3;border-radius:12px;font-weight:700"><button onclick="recharge()" style="background:#0d2a54;color:#ffcc00;border:none;padding:13px 20px;border-radius:12px;font-weight:900">+ Recharge</button></div></div>
-<div class="card"><div style="color:#6b7a9a;font-size:11px;font-weight:800">👥 CREER GROUPE</div><div style="font-size:12px;font-weight:700;margin:14px 0 6px">Nom du groupe</div><input id="groupName" value="Mama Gombe" style="width:100%;padding:13px;border:1.5px solid #e3eaf3;border-radius:12px;font-weight:700"><div style="font-size:12px;font-weight:700;margin:14px 0 6px">Montant par participant</div><input id="mise" type="number" value="1000" style="width:100%;padding:13px;border:1.5px solid #e3eaf3;border-radius:12px;font-weight:700"><button onclick="creerGroupe()" class="btn-yellow">+ Creer Tombola</button></div>
-<div class="card"><div style="font-weight:800">👥 Groupe: <b id="groupNameDisplay">Mama Gombe</b></div><div style="font-size:20px;font-weight:900;color:#0d2a54;margin:8px 0 2px" id="potText">1000 CDF x 1 = 1000 CDF</div><div class="progress"><div class="progress-fill" id="progress" style="width:20%"></div></div><div style="font-size:11px;color:#6b7a9a" id="infoText">1 / 5 participants</div><div class="members" id="membersList"></div><button onclick="participer()" style="width:100%;background:#0d2a54;color:white;border:none;padding:13px;border-radius:12px;font-weight:800;margin:8px 0">Participer - <span id="miseBtn">1000 CDF</span></button><button onclick="lancerTirage()" class="btn-blue">🎟️ LANCER TIRAGE - ZWA EBELE!</button><button onclick="shareWhatsApp()" class="btn-green">📲 Partager sur WhatsApp</button><div class="winner-box" id="winnerBox"><h4>🏆 GAGNANT: <span id="winnerName"></span></h4><div style="font-size:20px;font-weight:900;color:#0d2a54" id="winnerPot"></div><p id="mpesaLog" style="font-size:11px;color:#2d6a30;font-weight:600"></p></div></div>
-<div class="nav"><div>🏠<br>Accueil</div><div>👥<br>Groupes</div><div>🕒<br>Historique</div><div>👤<br>Profil</div></div>
+<div class="header"><h2>₮ TOMBOLA MBONGO</h2><p style="font-size:11px;opacity:.8">Ta Moko, Zwa Ebele - M-Pesa Ready</p></div>
+
+<div id="p1" class="page show">
+<div class="card"><div style="font-size:11px;color:#888;font-weight:800">💳 SOLDE</div><div class="solde" id="solde">4000 CDF</div>
+<div style="display:flex;gap:8px;margin-top:10px"><input id="rechargeInput" type="number" placeholder="5000" style="flex:1;padding:12px;border:1px solid #ddd;border-radius:10px"><button onclick="recharge()" class="btn btn-b" style="width:auto;margin:0">+ Recharge</button></div></div>
+<div class="card"><input id="groupName" value="Mama Gombe" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:10px"><input id="mise" value="1000" type="number" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:8px"><button onclick="creer()" class="btn btn-y">+ Creer Tombola</button></div>
+<div class="card"><b id="gname">Mama Gombe</b><div id="pot" style="font-weight:900;margin:6px 0"></div><div id="list" style="margin:10px 0"></div><button onclick="participer()" class="btn btn-b">Participer - <span id="mbtn"></span></button><button onclick="tirage()" class="btn btn-b">🎟️ LANCER TIRAGE - ZWA EBELE!</button><button onclick="shareW()" class="btn btn-g">📲 Partager WhatsApp</button><div id="win" style="display:none;background:#dff7e0;padding:12px;border-radius:10px;margin-top:12px;border:1px solid #b9e6bc">🏆 GAGNANT: <b id="winName"></b><br><span id="winPot"></span></div></div>
+</div>
+
+<div id="p2" class="page"><div class="card"><h3>👥 Groupes</h3><p style="margin-top:10px">Groupe: <b id="gname2">Mama Gombe</b><br>Actif • 5 places max</p><button onclick="go(1)" class="btn btn-y">Aller Accueil</button></div></div>
+<div id="p3" class="page"><div class="card"><h3>🕒 Historique</h3><div id="hlist" style="margin-top:10px"></div></div></div>
+<div id="p4" class="page"><div class="card" style="text-align:center"><div style="width:60px;height:60px;background:#ffcc00;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px">V</div><h3 style="margin-top:8px">Vous</h3><p style="font-size:12px;color:#666">Kinshasa • M-Pesa Actif</p><p style="margin-top:12px">Total gagné: <b id="stat">0 CDF</b></p><button onclick="localStorage.clear();location.reload()" style="margin-top:15px;background:#ffdddd;border:none;padding:12px;width:100%;border-radius:10px;font-weight:700">Reset App</button></div></div>
+
+<div class="nav">
+<div class="active" id="n1" onclick="go(1)">🏠<br>Accueil</div>
+<div id="n2" onclick="go(2)">👥<br>Groupes</div>
+<div id="n3" onclick="go(3)">🕒<br>Historique</div>
+<div id="n4" onclick="go(4)">👤<br>Profil</div>
+</div>
+
 <script>
-let solde=parseInt(localStorage.getItem('mbongo_solde_v5'))||4000;let membres=JSON.parse(localStorage.getItem('mbongo_membres_v5')||'["Vous"]');let miseVal=1000,maxVal=5;let noms=["Papa B","Maman K","Tonton D","Sœur A","Yaya L","Koko M","Papy J","Mama Gombe"];
-function save(){localStorage.setItem('mbongo_solde_v5',solde);localStorage.setItem('mbongo_membres_v5',JSON.stringify(membres));}
-function updateUI(){document.getElementById('solde').innerText=solde+' CDF';let pot=miseVal*membres.length;document.getElementById('potText').innerText=miseVal+' CDF x '+membres.length+' = '+pot+' CDF';document.getElementById('membersList').innerHTML=membres.map((m,i)=>`<div class='av ${i==0?'me':''}'>${m[0].toUpperCase()}</div>`).join('');document.getElementById('infoText').innerText=membres.length+' / '+maxVal+' participants';document.getElementById('progress').style.width=(membres.length/maxVal*100)+'%';save();}
-function participer(){if(solde<miseVal){alert('Solde insuffisant!');return}if(membres.length>=maxVal){alert('Groupe plein!');return}solde-=miseVal;membres.push(noms[Math.floor(Math.random()*noms.length)]);updateUI();}
-function launchConfetti(){let root=document.getElementById('confettiRoot');let colors=['#ffcc00','#0d2a54','#00b050'];for(let i=0;i<50;i++){let c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=colors[Math.floor(Math.random()*colors.length)];root.appendChild(c);setTimeout(()=>c.remove(),3500);}}
-function lancerTirage(){if(membres.length<2){alert('Min 2');return}let g=membres[Math.floor(Math.random()*membres.length)],pot=miseVal*membres.length;document.getElementById('winnerName').innerText=g;document.getElementById('winnerPot').innerText=pot+' CDF · ZWA EBELE!';document.getElementById('mpesaLog').innerText='Félicitations! '+pot+' CDF envoyé M-Pesa à '+g+' | TxID: MP'+Math.floor(Math.random()*900000+100000);document.getElementById('winnerBox').classList.add('show');launchConfetti();if(g=='Vous'){solde+=pot;updateUI();}}
-function creerGroupe(){let gn=document.getElementById('groupName').value||'Mama Gombe',mv=parseInt(document.getElementById('mise').value)||1000;document.getElementById('groupNameDisplay').innerText=gn;miseVal=mv;membres=["Vous"];document.getElementById('winnerBox').classList.remove('show');updateUI();}
-function recharge(){let amt=parseInt(document.getElementById('rechargeInput').value)||0;if(amt<=0)return;solde+=amt;updateUI();alert('M-Pesa: '+amt+' CDF reçu!');}
-function shareWhatsApp(){let text=`TOMBOLA MBONGO - Ta Moko, Zwa Ebele! Groupe: ${document.getElementById('groupNameDisplay').innerText} Pot: ${miseVal*maxVal} CDF Rejoins: https://blackdolph12.github.io/tombola-mbongo`;window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');}
-function resetApp(){if(confirm('Reset?')){solde=4000;membres=["Vous"];localStorage.clear();updateUI();}}
-document.getElementById('solde').addEventListener('dblclick',resetApp);
-updateUI();setInterval(()=>{let d=new Date();document.getElementById('time').innerText=d.getHours()+':'+d.getMinutes().toString().padStart(2,'0')},1000);
+let solde=4000,membres=["Vous"],mise=1000,max=5,histo=[],gagne=0;
+let noms=["Papa B","Maman K","Tonton D","Soeur A","Yaya L"];
+function update(){
+document.getElementById('solde').innerText=solde+' CDF';
+document.getElementById('pot').innerText=mise+' CDF x '+membres.length+' = '+(mise*membres.length)+' CDF';
+document.getElementById('mbtn').innerText=mise+' CDF';
+document.getElementById('list').innerHTML=membres.map((m,i)=>`<div class="av ${i==0?'me':''}">${m[0].toUpperCase()}</div>`).join('');
+document.getElementById('gname').innerText=document.getElementById('groupName').value;
+document.getElementById('gname2').innerText=document.getElementById('groupName').value;
+document.getElementById('stat').innerText=gagne+' CDF';
+document.getElementById('hlist').innerHTML=histo.length==0?'<p style="color:#888;text-align:center;margin-top:20px">Aucun tirage encore</p>':histo.slice().reverse().map(h=>`<div style="padding:10px;border-bottom:1px solid #eee;display:flex;justify-content:space-between"><div><b>${h.group}</b><br><span style="font-size:11px;color:#666">${h.pot} CDF</span></div><div style="text-align:right"><b>${h.winner}</b><br><span style="font-size:10px;color:green">${h.txid}</span></div></div>`).join('');
+}
+function go(n){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
+document.getElementById('p'+n).classList.add('show');
+document.querySelectorAll('.nav div').forEach(d=>d.classList.remove('active'));
+document.getElementById('n'+n).classList.add('active');
+window.scrollTo(0,0);
+}
+function participer(){if(solde<mise){alert('Solde insuffisant');return}if(membres.length>=max){alert('Groupe plein - Lance tirage');return}solde-=mise;membres.push(noms[Math.floor(Math.random()*noms.length)]);update();}
+function tirage(){if(membres.length<2){alert('Minimum 2');return}let w=membres[Math.floor(Math.random()*membres.length)];let pot=mise*membres.length;let txid='MP'+Math.floor(100000+Math.random()*900000);document.getElementById('winName').innerText=w;document.getElementById('winPot').innerText=pot+' CDF - ZWA EBELE! | '+txid;document.getElementById('win').style.display='block';if(w=='Vous'){solde+=pot;gagne+=pot;}histo.push({winner:w,pot:pot,group:document.getElementById('groupName').value,txid:txid});update();}
+function creer(){membres=["Vous"];document.getElementById('win').style.display='none';update();go(1);}
+function recharge(){let a=parseInt(document.getElementById('rechargeInput').value)||0;if(a>0){solde+=a;update();alert(a+' CDF reçu M-Pesa!');document.getElementById('rechargeInput').value='';}}
+function shareW(){window.open('https://wa.me/?text='+encodeURIComponent('TOMBOLA MBONGO - Ta Moko, Zwa Ebele! Rejoins: https://blackdolph12.github.io/tombola-mbongo')); }
+update();
 </script>
 </body>
 </html>
