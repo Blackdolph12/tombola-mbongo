@@ -7,57 +7,56 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Inter}
 body{background:#eef2f7;min-height:100vh;padding-bottom:90px}
-.header{background:#0d2a54;color:white;padding:20px 16px;border-radius:0 0 20px 20px}
+.header{background:#0d2a54;color:white;padding:22px 16px 16px;border-radius:0 0 20px 20px}
 .header-top{display:flex;align-items:center;gap:12px}
-.voda{width:44px;height:44px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px}
-.header h1{font-size:22px;font-weight:900;letter-spacing:.3px}
-.header p{font-size:12px;opacity:.9;margin-top:4px;font-weight:600}
+.voda{width:46px;height:46px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:#0d2a54}
+.header h1{font-size:21px;font-weight:900}
+.header p{font-size:11px;opacity:.85;margin-top:3px;font-weight:600}
 .card{background:white;margin:14px 12px;border-radius:18px;padding:16px;box-shadow:0 8px 24px rgba(13,42,84,.07);border:1px solid #eef2f7}
 .solde-head{display:flex;justify-content:space-between;align-items:center}
-.solde-label{color:#6b7a9a;font-size:12px;font-weight:800;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
-.icon-box{width:32px;height:32px;background:#e6f0ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.mbadge{border:1px solid #d1d9e6;padding:6px 10px;border-radius:10px;font-size:11px;font-weight:700;color:#0d2a54;text-align:center;line-height:1.1}
+.solde-label{color:#6b7a9a;font-size:11px;font-weight:800;letter-spacing:.6px;display:flex;align-items:center;gap:8px}
+.icon-box{width:30px;height:30px;background:#e6f0ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.mbadge{border:1px solid #d1d9e6;padding:6px 10px;border-radius:10px;font-size:11px;font-weight:700;color:#0d2a54;text-align:center}
 .mbadge span{color:#00b050;font-size:10px}
-.solde-val{font-size:42px;font-weight:900;color:#0d2a54;margin-top:6px}
+.solde-val{font-size:44px;font-weight:900;color:#0d2a54;margin-top:8px}
 .solde-sub{font-size:11px;color:#8a9bb5;margin-top:2px}
-.label{font-size:12px;font-weight:700;color:#0d2a54;margin:12px 0 6px}
-.input-wrap{position:relative}
-.input-wrap input{width:100%;padding:13px 14px 13px 38px;border:1.5px solid #e3eaf3;border-radius:12px;font-size:14px;font-weight:700;color:#0d2a54;outline:none}
+.label{font-size:12px;font-weight:700;color:#0d2a54;margin:14px 0 6px}
+.input-wrap{position:relative;display:flex;gap:8px}
+.input-wrap input{flex:1;padding:13px 14px;border:1.5px solid #e3eaf3;border-radius:12px;font-size:14px;font-weight:700;color:#0d2a54;outline:none}
+.btn-small{background:#0d2a54;color:#ffcc00;border:none;padding:13px 20px;border-radius:12px;font-weight:900;font-size:13px;cursor:pointer}
+.input-full{width:100%;padding:13px 14px 13px 36px;border:1.5px solid #e3eaf3;border-radius:12px;font-size:14px;font-weight:700;color:#0d2a54}
 .cdf{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:12px;color:#8a9bb5;font-weight:700}
 .btn-yellow{width:100%;background:#ffcc00;color:#0d2a54;border:none;padding:15px;border-radius:12px;font-weight:900;font-size:15px;cursor:pointer;margin-top:12px}
 .group-title{display:flex;align-items:center;gap:8px;font-weight:800;color:#0d2a54;font-size:15px}
 .pot-big{font-size:20px;font-weight:900;color:#0d2a54;margin:8px 0 2px}
 .pot-small{font-size:12px;color:#6b7a9a}
 .btn-blue{width:100%;background:#0d2a54;color:white;border:none;padding:15px;border-radius:12px;font-weight:900;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
-.winner-box{background:#dff7e0;border-radius:12px;padding:12px;margin-top:12px;display:none;border:1px solid #b9e6bc}
+.winner-box{background:#dff7e0;border-radius:14px;padding:14px;margin-top:12px;display:none;border:1.5px solid #b9e6bc}
 .winner-box.show{display:block}
-.winner-box h4{color:#0d2a54;font-size:14px;font-weight:900}
-.winner-box .amt{font-size:16px;font-weight:900;color:#0d2a54}
-.winner-box p{font-size:11px;color:#2d6a30;margin-top:4px;font-weight:600}
 .nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #eef2f7;display:flex;justify-content:space-around;padding:10px 0 22px}
 .nav div{text-align:center;font-size:10px;color:#8a9bb5;font-weight:700}
 .nav div.active{color:#0d2a54}
-.members{display:flex;margin:10px 0}
-.av{width:34px;height:34px;border-radius:50%;background:#0d2a54;color:white;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;border:2px solid white;margin-left:-6px}
+.members{display:flex;flex-wrap:wrap;gap:0;margin:10px 0}
+.av{width:36px;height:36px;border-radius:50%;background:#0d2a54;color:white;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;border:2px solid white;margin-left:-6px}
 .av:first-child{margin-left:0}.av.me{background:#ffcc00;color:#0d2a54}
 </style>
 </head>
 <body>
-<div class="header"><div class="header-top"><div class="voda">🔴</div><div><h1>TOMBOLA MBONGO</h1><p>Ta Moko, Zwa Ebele - M-Pesa Ready</p></div></div></div>
+<div class="header"><div class="header-top"><div class="voda">₮</div><div><h1>TOMBOLA MBONGO</h1><p>Ta Moko, Zwa Ebele - M-Pesa Ready • <span id="time">18:53</span></p></div></div></div>
 
 <div class="card">
 <div class="solde-head"><div class="solde-label"><div class="icon-box">💳</div> SOLDE DISPONIBLE</div><div class="mbadge">M-Pesa<br><span>● Actif</span></div></div>
 <div class="solde-val" id="solde">4000 CDF</div>
-<div class="solde-sub">Solde mis à jour · Aujourd'hui <span id="time">08:32</span></div>
-<div style="display:flex;gap:8px;margin-top:12px"><input id="rechargeInput" placeholder="Montant M-Pesa" type="number" style="flex:1;padding:12px;border:1.5px solid #e3eaf3;border-radius:10px;font-weight:700"><button onclick="recharge()" style="background:#0d2a54;color:#ffcc00;border:none;padding:12px 18px;border-radius:10px;font-weight:900">Recharge</button></div>
+<div class="solde-sub">Solde mis à jour · Aujourd'hui <span id="time2">18:53</span></div>
+<div class="input-wrap" style="margin-top:12px"><input id="rechargeInput" placeholder="Montant M-Pesa" type="number"><button onclick="recharge()" class="btn-small">Recharge</button></div>
 </div>
 
 <div class="card">
 <div class="solde-label"><div class="icon-box">👥</div> CREER GROUPE</div>
 <div class="label">Nom du groupe</div>
-<div class="input-wrap"><span style="position:absolute;left:12px;top:50%;transform:translateY(-50%)">👤</span><input id="groupName" value="Mama Gombe"></div>
+<div style="position:relative"><span style="position:absolute;left:12px;top:50%;transform:translateY(-50%)">👤</span><input id="groupName" class="input-full" value="Mama Gombe"></div>
 <div class="label">Montant par participant</div>
-<div class="input-wrap"><input id="mise" type="number" value="1000" style="padding-left:14px"><span class="cdf">CDF</span></div>
+<div style="position:relative"><input id="mise" class="input-full" type="number" value="1000" style="padding-left:14px"><span class="cdf">CDF</span></div>
 <button onclick="creerGroupe()" class="btn-yellow">+ Creer Tombola</button>
 </div>
 
@@ -65,23 +64,60 @@ body{background:#eef2f7;min-height:100vh;padding-bottom:90px}
 <div class="group-title"><span style="background:#e6f0ff;padding:6px;border-radius:8px">👥</span> Groupe: <b id="groupNameDisplay">Mama Gombe</b></div>
 <div class="pot-big" id="potText">1000 CDF x 5 = 5000 CDF</div>
 <div class="pot-small">pot</div>
-<div style="font-size:11px;color:#6b7a9a;margin:6px 0" id="infoText">5 participants · En attente du tirage</div>
+<div style="font-size:11px;color:#6b7a9a;margin:6px 0" id="infoText">1 / 5 participants · En attente du tirage</div>
 <div class="members" id="membersList"></div>
-<button onclick="participer()" style="width:100%;background:#0d2a54;color:white;border:none;padding:12px;border-radius:10px;font-weight:800;margin:8px 0">Participer - <span id="miseBtn">1000 CDF</span></button>
+<button onclick="participer()" id="partBtn" style="width:100%;background:#0d2a54;color:white;border:none;padding:13px;border-radius:12px;font-weight:800;margin:8px 0;cursor:pointer">Participer - <span id="miseBtn">1000 CDF</span></button>
 <button onclick="lancerTirage()" class="btn-blue">🎟️ LANCER TIRAGE - ZWA EBELE!</button>
-<div class="winner-box" id="winnerBox"><h4>🏆 GAGNANT: <span id="winnerName">Papa B</span></h4><div class="amt" id="winnerPot">5000 CDF · ZWA EBELE</div><p id="mpesaLog">Félicitations! Le gain a été envoyé au compte M-Pesa de Papa B</p></div>
+<div class="winner-box" id="winnerBox"><h4>🏆 GAGNANT: <span id="winnerName"></span></h4><div style="font-size:18px;font-weight:900;color:#0d2a54;margin-top:4px" id="winnerPot"></div><p id="mpesaLog" style="font-size:11px;color:#2d6a30;margin-top:6px;font-weight:600"></p></div>
 </div>
 
 <div class="nav"><div class="active">🏠<br>Accueil</div><div>👥<br>Groupes</div><div>🕒<br>Historique</div><div>👤<br>Profil</div></div>
 
 <script>
-let solde=4000,membres=["Vous","Mama","Papa B","Maman K","Tonton"],miseVal=1000;
-function updateUI(){document.getElementById('solde').innerText=solde+' CDF';document.getElementById('potText').innerText=miseVal+' CDF x 5 = '+(miseVal*5)+' CDF';document.getElementById('membersList').innerHTML=membres.map((m,i)=>`<div class='av ${i==0?'me':''}'>${m[0]}</div>`).join('');}
-function participer(){if(solde<miseVal){alert('Solde insuffisant!');return}solde-=miseVal;membres.push("Papa B");updateUI();}
-function lancerTirage(){let g=membres[Math.floor(Math.random()*membres.length)],pot=miseVal*5;document.getElementById('winnerName').innerText=g;document.getElementById('winnerPot').innerText=pot+' CDF · ZWA EBELE';document.getElementById('mpesaLog').innerText='Félicitations! Le gain a été envoyé au compte M-Pesa de '+g+' | TxID MP'+Math.floor(Math.random()*900000+100000);document.getElementById('winnerBox').classList.add('show');if(g=='Vous'){solde+=pot;updateUI();}}
-function creerGroupe(){let gn=document.getElementById('groupName').value||'Mama Gombe',mv=parseInt(document.getElementById('mise').value)||1000;document.getElementById('groupNameDisplay').innerText=gn;miseVal=mv;document.getElementById('winnerBox').classList.remove('show');updateUI();}
-function recharge(){let amt=parseInt(document.getElementById('rechargeInput').value)||0;if(!amt)return;solde+=amt;updateUI();alert('M-Pesa: '+amt+' CDF reçu!');document.getElementById('rechargeInput').value='';}
-updateUI();setInterval(()=>{let d=new Date();document.getElementById('time').innerText=d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')},1000);
+let solde = parseInt(localStorage.getItem('mbongo_solde')) || 4000;
+let membres = JSON.parse(localStorage.getItem('mbongo_membres') || '["Vous"]');
+let miseVal = 1000;
+let maxVal = 5;
+let noms = ["Vous","Papa B","Maman K","Tonton D","Sœur A","Yaya L","Koko M","Papy J","Mama Gombe"];
+function save(){localStorage.setItem('mbongo_solde',solde);localStorage.setItem('mbongo_membres',JSON.stringify(membres));}
+function updateUI(){
+document.getElementById('solde').innerText=solde+' CDF';
+document.getElementById('potText').innerText=miseVal+' CDF x '+maxVal+' = '+(miseVal*maxVal)+' CDF';
+document.getElementById('membersList').innerHTML=membres.map((m,i)=>`<div class='av ${i==0?'me':''}'>${m[0].toUpperCase()}</div>`).join('');
+document.getElementById('infoText').innerText=membres.length+' / '+maxVal+' participants · En attente du tirage';
+save();
+}
+function participer(){
+if(solde<miseVal){alert('Solde insuffisant! Clique Recharge');return}
+if(membres.length>=maxVal){alert('Groupe plein! Lancer tirage');return}
+solde-=miseVal;
+membres.push(noms[membres.length % noms.length]);
+updateUI();
+}
+function lancerTirage(){
+if(membres.length<2){alert('Minimum 2 participants');return}
+let g=membres[Math.floor(Math.random()*membres.length)],pot=miseVal*membres.length;
+document.getElementById('winnerName').innerText=g;
+document.getElementById('winnerPot').innerText=pot+' CDF · ZWA EBELE!';
+document.getElementById('mpesaLog').innerText='Félicitations! '+pot+' CDF envoyé au compte M-Pesa de '+g+' | TxID: MP'+Math.floor(Math.random()*900000+100000);
+document.getElementById('winnerBox').classList.add('show');
+if(g=='Vous'){solde+=pot;updateUI();}
+}
+function creerGroupe(){
+let gn=document.getElementById('groupName').value||'Mama Gombe',mv=parseInt(document.getElementById('mise').value)||1000;
+document.getElementById('groupNameDisplay').innerText=gn;miseVal=mv;membres=["Vous"];document.getElementById('winnerBox').classList.remove('show');updateUI();
+}
+function recharge(){
+let amt=parseInt(document.getElementById('rechargeInput').value)||0;
+if(amt<=0){alert('Entre montant ex: 5000');return}
+solde+=amt;updateUI();
+alert('M-Pesa: '+amt+' CDF reçu! Nouveau solde: '+solde+' CDF');
+document.getElementById('rechargeInput').value='';
+}
+function resetApp(){if(confirm('Reset solde à 4000 CDF?')){solde=4000;membres=["Vous"];localStorage.clear();updateUI();}}
+document.getElementById('solde').addEventListener('dblclick',resetApp);
+updateUI();
+setInterval(()=>{let d=new Date();let t=d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0');document.getElementById('time').innerText=t;document.getElementById('time2').innerText=t;},1000);
 </script>
 </body>
 </html>
