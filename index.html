@@ -3,50 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TOMBOLA MBONGO</title>
+<title>TOMBOLA MBONGO - Ta Moko, Zwa Ebele</title>
 <style>
-body{font-family:Arial;background:#f0f2f5;margin:0;padding:0}
-.header{background:#008751;color:white;padding:15px;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px}
-.header img{width:40px;height:40px;border-radius:50%}
-.page{display:none;padding:15px;padding-bottom:80px}
-.page.active{display:block}
-.card{background:white;border-radius:10px;padding:15px;margin-bottom:15px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
-.nav{position:fixed;bottom:0;width:100%;background:white;display:flex;justify-content:space-around;padding:10px;border-top:1px solid #ddd}
-.nav button{background:none;border:none;font-size:14px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto}
+body{background:#f2f4f7;padding-bottom:90px}
+.header{background:#0AB25C;color:white;padding:18px 16px;display:flex;align-items:center;gap:10px}
+.header .logo{width:38px;height:38px;background:#FFD600;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#0A3D25;border:3px solid #063}
+.header h1{font-size:17px;font-weight:900}
+.subheader{background:#09924c;color:#FFE066;padding:6px 16px;font-size:12px;font-weight:700}
+.card{background:white;margin:14px;border-radius:16px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.row{display:flex;justify-content:space-between;align-items:center}
+.solde-val{font-size:32px;font-weight:900;color:#0A3D25}
+.badge{background:#25D366;color:white;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800}
+.input{width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:10px;margin:8px 0;font-size:14px}
+.btn-yellow{width:100%;background:#FFD600;color:#0A3D25;border:none;padding:16px;border-radius:14px;font-weight:900;font-size:16px;cursor:pointer}
+.btn-green{width:100%;background:#0AB25C;color:white;border:none;padding:14px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;margin-top:8px}
+.btn-blue{width:100%;background:#0A3D25;color:#FFD600;border:none;padding:18px;border-radius:14px;font-weight:900;font-size:18px;cursor:pointer;margin-top:12px}
+.members{display:flex;gap:8px;margin:12px 0}
+.avatar{width:44px;height:44px;border-radius:50%;background:#0AB25C;color:white;display:flex;align-items:center;justify-content:center;font-weight:800}
+.pot{font-size:16px;font-weight:900;color:#0A3D25;background:#f0fdf4;padding:10px;border-radius:10px;text-align:center;margin:10px 0}
+.winner{background:#FFD600;border-radius:14px;padding:14px;margin-top:12px;display:none}
+.winner.show{display:block}
+.nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #eee;display:flex;justify-content:space-around;padding:10px 0 20px}
+.nav div{text-align:center;font-size:11px;color:#888}.nav div.active{color:#0AB25C;font-weight:800}
 </style>
 </head>
 <body>
-<div class="header"><img src="9b7ffd56-a935-4a43-3c2c-b36a032378f3.jpeg"><h2>TOMBOLA MBONGO</h2></div>
+<div class="header"><div class="logo">₮</div><h1>TOMBOLA MBONGO</h1></div>
+<div class="subheader">Ta Moko, Zwa Ebele • M-Pesa Ready • <span id="time">18:36</span></div>
 
-<div id="accueil" class="page active">
-<div class="card"><div>Solde</div><div class="solde" style="font-size:24px;font-weight:bold">0 FC</div></div>
-<div class="card"><h3>Prochain Tirage</h3><p>Groupe Mama Gouvernement - 100 FC</p><button onclick="participer()" style="background:#008751;color:white;padding:10px;width:100%;border:none;border-radius:5px">Participer</button></div>
+<div class="card">
+<div class="row"><div><div style="color:#666;font-size:14px">Solde:</div><div class="solde-val" id="solde">4000 CDF</div></div><div class="badge">✅ M-Pesa Actif</div></div>
+<div style="margin-top:10px;display:flex;gap:8px"><input id="rechargeInput" class="input" placeholder="Montant M-Pesa" type="number" style="margin:0"><button onclick="recharge()" class="btn-green" style="width:120px;margin:0">Recharge</button></div>
 </div>
 
-<div id="groupes" class="page">
-<div class="card groupe"><h3>👥 Groupe Mama Gouvernement</h3><p>100 FC - 50 membres - Cagnotte: 4000 FC</p></div>
-<div class="card"><h3>+ Créer Nouveau Groupe</h3></div>
-<div id="listeGroupes"></div>
+<div class="card">
+<h3>Groupe: <span id="groupNameDisplay">Mama Gombe</span></h3>
+<input id="groupName" class="input" placeholder="Nom groupe ex: Mama Gombe">
+<div style="display:flex;gap:8px"><input id="mise" class="input" type="number" value="100"><input id="maxMemb" class="input" type="number" value="5"></div>
+<button onclick="creerGroupe()" class="btn-yellow">+ Creer Tombola</button>
+<div class="pot" id="potText">100 FC × 5 = 500 FC 🪙 pot</div>
+<div class="members" id="membersList"></div>
+<div style="font-size:12px;color:#666" id="infoText">1 / 5 membres</div>
+<button onclick="participer()" class="btn-green">Participer - <span id="miseBtn">100 FC</span></button>
+<button onclick="lancerTirage()" class="btn-blue">⭐ LANCER TIRAGE - ZWA EBELE!</button>
+<div class="winner" id="winnerBox"><div style="font-weight:900">🏆 Gagnant: <span id="winnerName"></span> wins <span id="winnerPot"></span></div><div style="font-size:12px">Félicitations! M-Pesa envoyé ✅</div><div style="font-size:10px;margin-top:6px" id="mpesaLog"></div></div>
 </div>
 
-<div id="historique" class="page">
-<div class="card"><h3>🕒 Historique</h3><div id="listeHistorique">Aucun historique</div></div>
-</div>
-
-<div id="profil" class="page">
-<div class="card" style="text-align:center"><img src="9b7ffd56-a935-4a43-3c2c-b36a032378f3.jpeg" style="width:120px;height:120px;border-radius:50%"><h3>TOMBOLA MBONGO</h3><p>Solde: <span class="solde">0 FC</span></p></div>
-</div>
-
-<div class="nav">
-<button onclick="show('accueil')" id="b-accueil">🏠<br>Accueil</button>
-<button onclick="show('groupes')" id="b-groupes">👥<br>Groupes</button>
-<button onclick="show('historique')" id="b-historique">🕒<br>Historique</button>
-<button onclick="show('profil')" id="b-profil">👤<br>Profil</button>
-</div>
+<div class="nav"><div class="active">🏠<br>Accueil</div><div>👥<br>Groupes</div><div>🕒<br>Historique</div><div>👤<br>Profil</div></div>
 
 <script>
-function show(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(p).classList.add('active')}
-function participer(){alert('Participation enregistrée!')}
+let solde=4000,membres=["Vous"],miseVal=100,maxVal=5,noms=["Mama Gombe","Papa B","Maman K","Tonton D","Sœur A","Yaya L","Koko M"];
+function updateUI(){document.getElementById('solde').innerText=solde+' FC';document.getElementById('potText').innerText=miseVal+' FC × '+maxVal+' = '+(miseVal*maxVal)+' FC 🪙 pot';document.getElementById('miseBtn').innerText=miseVal+' FC';document.getElementById('membersList').innerHTML=membres.map(m=>`<div class='avatar'>${m[0]}</div>`).join('');document.getElementById('infoText').innerText=membres.length+' / '+maxVal+' membres';}
+function participer(){if(solde<miseVal){alert('Solde insuffisant!');return}if(membres.length>=maxVal){alert('Groupe plein!');return}solde-=miseVal;membres.push(noms[membres.length%noms.length]);updateUI();if(membres.length==maxVal)setTimeout(lancerTirage,800);}
+function lancerTirage(){if(membres.length<2){alert('Min 2 participants');return}let g=membres[Math.floor(Math.random()*membres.length)],pot=miseVal*maxVal;document.getElementById('winnerName').innerText=g;document.getElementById('winnerPot').innerText=pot+' FC';document.getElementById('mpesaLog').innerText='M-Pesa: '+pot+' FC → '+g+' | TxID: MP'+Math.floor(Math.random()*900000+100000);document.getElementById('winnerBox').classList.add('show');if(g=="Vous"){solde+=pot;updateUI();}setTimeout(()=>{if(confirm(g+' a gagné '+pot+' FC! Nouveau groupe?')){membres=["Vous"];document.getElementById('winnerBox').classList.remove('show');updateUI();}},1500);}
+function creerGroupe(){let gn=document.getElementById('groupName').value||'Mama Gombe',mv=parseInt(document.getElementById('mise').value)||100,mx=parseInt(document.getElementById('maxMemb').value)||5;document.getElementById('groupNameDisplay').innerText=gn;miseVal=mv;maxVal=mx;membres=["Vous"];document.getElementById('winnerBox').classList.remove('show');updateUI();}
+function recharge(){let amt=parseInt(document.getElementById('rechargeInput').value)||0;if(amt<=0)return;solde+=amt;updateUI();alert('M-Pesa: '+amt+' FC reçu!');document.getElementById('rechargeInput').value='';}
+updateUI();
 </script>
 </body>
 </html>
