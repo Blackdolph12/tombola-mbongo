@@ -4,75 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TOMBOLA MBONGO</title>
-<link rel="icon" href="9b7ffd56-a935-4a43-3c2c-b36a032378f3.jpeg">
-<link rel="apple-touch-icon" href="9b7ffd56-a935-4a43-3c2c-b36a032378f3.jpeg">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
-body{background:#f5f5f7;padding-bottom:80px}
-.header{background:#111;color:#FFD700;padding:18px;text-align:center;font-weight:bold;font-size:20px;letter-spacing:2px}
-.page{display:none;padding:16px}
+body{font-family:Arial;background:#f0f2f5;margin:0;padding:0}
+.header{background:#008751;color:white;padding:15px;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px}
+.header img{width:40px;height:40px;border-radius:50%}
+.page{display:none;padding:15px;padding-bottom:80px}
 .page.active{display:block}
-.card{background:white;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
-.sold{font-size:32px;font-weight:800}
-.groupe{border-left:5px solid #FFD700}
-.btn{width:100%;background:#111;color:#FFD700;border:none;padding:14px;border-radius:12px;font-weight:bold;margin-top:10px;font-size:16px}
-.nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;display:flex;justify-content:space-around;padding:10px 0}
-.nav button{background:none;border:none;font-size:11px;display:flex;flex-direction:column;align-items:center;color:#999}
-.nav button.active{color:#111}
-.nav button span{font-size:22px}
+.card{background:white;border-radius:10px;padding:15px;margin-bottom:15px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+.nav{position:fixed;bottom:0;width:100%;background:white;display:flex;justify-content:space-around;padding:10px;border-top:1px solid #ddd}
+.nav button{background:none;border:none;font-size:14px}
 </style>
 </head>
 <body>
-<div class="header">TOMBOLA MBONGO</div>
+<div class="header"><img src="9b7ffd56-a935-4a43-3c2c-b36a032378f3.jpeg"><h2>TOMBOLA MBONGO</h2></div>
 
 <div id="accueil" class="page active">
-<div class="card"><div>Solde</div><div class="sold">5000 CDF</div><div style="color:green">● En ligne</div></div>
-<div class="card"><h3>Prochain Tirage</h3><p>Groupe Mama Gombe - Aujourd'hui 20:00</p><button class="btn">Voir</button></div>
+<div class="card"><div>Solde</div><div class="solde" style="font-size:24px;font-weight:bold">0 FC</div></div>
+<div class="card"><h3>Prochain Tirage</h3><p>Groupe Mama Gouvernement - 100 FC</p><button onclick="participer()" style="background:#008751;color:white;padding:10px;width:100%;border:none;border-radius:5px">Participer</button></div>
 </div>
 
 <div id="groupes" class="page">
-<div class="card groupe"><h3>👥 Groupe Mama Gombe</h3><p>1000 CDF x 5 membres = 5000 CDF</p><p>🏆 Gagnant: Papa B</p><button class="btn" onclick="tirer()">🎲 Lancer Tirage</button></div>
-<div class="card"><h3>+ Créer Nouveau Groupe</h3><input id="nomGroupe" placeholder="Nom du groupe" style="width:100%;padding:12px;border-radius:8px;border:1px solid #ddd;margin-top:8px"><button class="btn" onclick="creer()">Créer</button></div>
+<div class="card groupe"><h3>👥 Groupe Mama Gouvernement</h3><p>100 FC - 50 membres - Cagnotte: 4000 FC</p></div>
+<div class="card"><h3>+ Créer Nouveau Groupe</h3></div>
 <div id="listeGroupes"></div>
 </div>
 
 <div id="historique" class="page">
-<div class="card"><h3>🕐 Historique</h3><div id="hist">- 12 Sept: Papa B a gagné 5000 CDF<br>- 10 Sept: Mama G a gagné 3000 CDF</div></div>
+<div class="card"><h3>🕒 Historique</h3><div id="listeHistorique">Aucun historique</div></div>
 </div>
 
 <div id="profil" class="page">
-<div class="card" style="text-align:center"><img src="9b7ffd56-2cb6-49a9-9118-6cd0efaf2bf5.jpeg" style="width:80px;height:80px;border-radius:50%"><h2 style="margin-top:10px">Joueur</h2><p>Telkom LTE</p><p>Solde: 5000 CDF</p></div>
+<div class="card" style="text-align:center"><img src="9b7ffd56-a935-4a43-3c2c-b36a032378f3.jpeg" style="width:120px;height:120px;border-radius:50%"><h3>TOMBOLA MBONGO</h3><p>Solde: <span class="solde">0 FC</span></p></div>
 </div>
 
 <div class="nav">
-<button onclick="show('accueil')" id="b-accueil" class="active"><span>🏠</span>Accueil</button>
-<button onclick="show('groupes')" id="b-groupes"><span>👥</span>Groupes</button>
-<button onclick="show('historique')" id="b-historique"><span>🕐</span>Historique</button>
-<button onclick="show('profil')" id="b-profil"><span>👤</span>Profil</button>
+<button onclick="show('accueil')" id="b-accueil">🏠<br>Accueil</button>
+<button onclick="show('groupes')" id="b-groupes">👥<br>Groupes</button>
+<button onclick="show('historique')" id="b-historique">🕒<br>Historique</button>
+<button onclick="show('profil')" id="b-profil">👤<br>Profil</button>
 </div>
 
 <script>
-function show(p){
-document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-document.getElementById(p).classList.add('active');
-document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
-document.getElementById('b-'+p).classList.add('active');
-}
-function tirer(){
-let noms=["Papa B","Mama G","Junior","Aline","Koffi"];
-let g=noms[Math.floor(Math.random()*noms.length)];
-alert("🎉 GAGNANT: "+g+" ! 5000 CDF");
-document.getElementById('hist').innerHTML="- Maintenant: "+g+" a gagné 5000 CDF<br>"+document.getElementById('hist').innerHTML;
-}
-function creer(){
-let n=document.getElementById('nomGroupe').value;
-if(!n)return alert("Entre nom");
-let d=document.createElement('div');
-d.className='card groupe';
-d.innerHTML="<h3>👥 "+n+"</h3><p>0 membres</p><button class='btn' onclick='tirer()'>🎲 Lancer Tirage</button>";
-document.getElementById('listeGroupes').appendChild(d);
-document.getElementById('nomGroupe').value="";
-}
+function show(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(p).classList.add('active')}
+function participer(){alert('Participation enregistrée!')}
 </script>
 </body>
 </html>
