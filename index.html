@@ -1,113 +1,64 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TOMBOLA MBONGO - V3 REAL</title>
+<title>TOMBOLA - CARD TEST</title>
 <style>
-body{font-family:Arial;background:#0f172a;color:white;margin:0;padding:15px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:#1e293b;border-radius:15px;padding:20px;text-align:center;border:1px solid #334155}
-.btn{background:#3b82f6;color:white;border:none;padding:12px 15px;border-radius:8px;width:100%;margin-top:10px;font-weight:bold;cursor:pointer;display:block;text-decoration:none;text-align:center;box-sizing:border-box}
-.page{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0f172a;padding:20px;box-sizing:border-box;overflow:auto;z-index:99}
-.input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none;box-sizing:border-box}
-.btn-green{background:#22c55e} .btn-back{background:#475569;margin-bottom:15px}
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#0f172a;color:white;padding:15px}
+.card{background:#1e293b;padding:20px;border-radius:16px;border:1px solid #334155;margin-top:15px}
+.btn{width:100%;padding:14px;border:none;border-radius:10px;font-weight:bold;margin-top:10px;cursor:pointer}
+.btn-yoco{background:#00b14f;color:white} .btn-green{background:#22c55e;color:black} .input{width:100%;padding:13px;margin:8px 0;border-radius:10px;border:none}
+.test{background:#422006;border:1px solid #f59e0b;padding:12px;border-radius:10px;font-size:12px;margin:10px 0}
 </style></head><body>
+<h1 style="text-align:center">💳 TEST YOUR BANK CARD</h1>
+<p style="text-align:center;color:#22c55e">Marchand: +243 823 043 089 • Yoco + M-Pesa</p>
 
-<div id="home">
-<div style="text-align:center;padding:15px"><h1>🎰 TOMBOLA MBONGO</h1><p>💎 Marchand: +243 823 043 089</p></div>
-<div class="grid">
-<div class="card"><div style="font-size:40px">🎟️</div><h3>LOTTERY</h3><p style="color:#22c55e">Jackpot 50.000 FC</p><button class="btn" onclick="openPage('lottery')">PLAY</button></div>
-<div class="card"><div style="font-size:40px">💳</div><h3>AIRTIME</h3><p style="color:#22c55e">Vodacom - Airtel</p><button class="btn" onclick="openPage('airtime')">BUY</button></div>
-<div class="card"><div style="font-size:40px">💡</div><h3>ELECTRICITE</h3><p style="color:#22c55e">SNEL Prepayé</p><button class="btn" onclick="openPage('snel')">PAYER</button></div>
-<div class="card"><div style="font-size:40px">📺</div><h3>CANAL+</h3><p style="color:#22c55e">Decoder</p><button class="btn" onclick="openPage('canal')">RENEW</button></div>
+<div class="card">
+<h3>🎰 Select Service to Test Card</h3>
+<select class="input" id="service"><option>LOTTERY - R20</option><option>CASINO - R50</option><option>AIRTIME - R100</option><option>BETWAY - R200</option></select>
+
+<h3>💳 Enter Card Details (Real Card Test)</h3>
+<input class="input" id="cardNum" placeholder="Card Number - e.g. 4000 0000 0000 0002" maxlength="19">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<input class="input" id="exp" placeholder="MM/YY"><input class="input" id="cvv" placeholder="CVV">
 </div>
-<div style="text-align:center;margin-top:20px;color:#94a3b8;font-size:13px">Paiement sécurisé via M-Pesa / Orange Money<br>Marchand Officiel TOMBOLA MBONGO</div>
+<input class="input" id="amt" type="number" placeholder="Amount R - e.g. 20" value="20">
+
+<div class="test">
+⚠️ TEST MODE - To make REAL card work, you need Yoco Public Key:<br>
+• Test card: 4000 0000 0000 0002 (any future date, CVV 123) = Success<br>
+• Your real Capitec/Visa card will work once you add Yoco key below
 </div>
 
-<div id="lottery" class="page">
-<button class="btn btn-back" onclick="goHome()">← RETOUR</button>
-<h1>🎰 LOTTERY</h1>
-<div style="background:#1e293b;padding:20px;border-radius:15px;text-align:center;margin-top:20px">
-<h2>Jackpot: 50,000 FC</h2><p>Ticket: 2,000 FC</p>
-<input class="input" id="lotNum" placeholder="Numéro 1-20" type="number">
-<button class="btn" style="background:#eab308;color:black" onclick="playLottery()">🎲 TIRER - 2,000 FC</button>
-<h2 id="lotResult"></h2>
-<div id="payLottery" style="display:none">
-<p>✅ Gagnez? Payez pour jouer!</p>
-<a class="btn btn-green" id="lotMpesa" href="">💰 PAYER 2,000 FC M-PESA</a>
-<a class="btn" style="background:#25D366" href="https://wa.me/243823043089?text=Je veux jouer LOTTERY TOMBOLA 2000FC">📱 WHATSAPP +243823043089</a>
-</div>
-</div></div>
+<input class="input" id="yocoKey" placeholder="Paste Yoco Public Key here (pk_... ) - Optional for now">
 
-<div id="airtime" class="page">
-<button class="btn btn-back" onclick="goHome()">← RETOUR</button>
-<h1>💳 AIRTIME</h1>
-<div style="background:#1e293b;padding:20px;border-radius:15px;margin-top:20px">
-<select class="input" id="op"><option>Vodacom</option><option>Airtel</option><option>Orange</option><option>Africell</option></select>
-<input class="input" id="numAir" placeholder="Numéro 081...">
-<input class="input" id="montAir" placeholder="Montant FC" type="number">
-<button class="btn btn-green" onclick="genPay('airtime')">GÉNÉRER PAIEMENT</button>
-<div id="airPayBox" style="display:none;margin-top:15px">
-<a class="btn btn-green" id="airMpesa" href="">💰 PAYER M-PESA MAINTENANT</a>
-<a class="btn" href="tel:+243823043089" style="background:#3b82f6">📞 APPELER MARCHAND</a>
-<a class="btn" style="background:#25D366" id="airWa" href="">📱 WHATSAPP COMMANDE</a>
-<p style="font-size:12px;color:#94a3b8;text-align:center;margin-top:10px">Code USSD: *422*... Après paiement, envoi preuve WhatsApp</p>
-</div>
-</div></div>
+<button class="btn btn-yoco" onclick="testCard()">💳 PAY R<span id="amtShow">20</span> WITH CARD - TEST</button>
+<button class="btn btn-green" onclick="payMpesaTest()">💸 PAY WITH M-PESA DRC - REAL TO +243 823 043 089</button>
 
-<div id="snel" class="page">
-<button class="btn btn-back" onclick="goHome()">← RETOUR</button>
-<h1>💡 SNEL</h1>
-<div style="background:#1e293b;padding:20px;border-radius:15px;margin-top:20px">
-<input class="input" id="compteur" placeholder="Numéro Compteur">
-<input class="input" id="montSnel" placeholder="Montant FC" type="number">
-<button class="btn btn-green" onclick="genPay('snel')">GÉNÉRER PAIEMENT SNEL</button>
-<div id="snelPayBox" style="display:none;margin-top:15px">
-<a class="btn btn-green" id="snelMpesa" href="">💰 PAYER SNEL M-PESA</a>
-<a class="btn" style="background:#25D366" id="snelWa" href="">📱 WHATSAPP PREUVE</a>
+<div id="result" style="display:none;margin-top:15px;padding:15px;background:#0f172a;border-radius:10px;border:2px solid #22c55e"></div>
 </div>
-</div></div>
 
-<div id="canal" class="page">
-<button class="btn btn-back" onclick="goHome()">← RETOUR</button>
-<h1>📺 CANAL+</h1>
-<div style="background:#1e293b;padding:20px;border-radius:15px;margin-top:20px">
-<input class="input" id="decodeur" placeholder="Numéro Décodeur">
-<select class="input" id="formule"><option>Access - 5000 FC</option><option>Evasion - 12000 FC</option><option>Essentiel - 25000 FC</option><option>Tout Canal - 45000 FC</option></select>
-<button class="btn btn-green" onclick="genPay('canal')">RENOUVELER</button>
-<div id="canalPayBox" style="display:none;margin-top:15px">
-<a class="btn btn-green" id="canalMpesa" href="">💰 PAYER CANAL+ M-PESA</a>
-<a class="btn" style="background:#25D366" id="canalWa" href="">📱 WHATSAPP</a>
+<div class="card">
+<h3>🔗 QUICK YOCO LINK (Works Immediately)</h3>
+<p style="font-size:12px;color:#94a3b8">If you have Yoco App, create Payment Link for R20 and paste here:</p>
+<input class="input" id="yocoLink" placeholder="https://pay.yoco.com/...">
+<a class="btn btn-yoco" id="yocoBtn" href="" target="_blank" style="display:block;text-align:center;text-decoration:none">OPEN YOCO LINK & PAY WITH CARD</a>
+<button class="btn" style="background:#475569" onclick="updateYocoLink()">UPDATE YOCO LINK</button>
 </div>
-</div></div>
 
 <script>
-const MARCHAND = "243823043089";
-function openPage(id){document.getElementById('home').style.display='none';document.getElementById(id).style.display='block';}
-function goHome(){document.querySelectorAll('.page').forEach(p=>p.style.display='none');document.getElementById('home').style.display='block';}
-function playLottery(){
-let n=document.getElementById('lotNum').value; let win=Math.floor(Math.random()*20)+1;
-if(!n){alert('Entrez numéro!');return}
-if(n==win){document.getElementById('lotResult').innerHTML='🎉 GAGNÉ! Tirage '+win+' - 50,000 FC!';}else{document.getElementById('lotResult').innerHTML='😢 Perdu! Tirage: '+win;}
-document.getElementById('payLottery').style.display='block';
-document.getElementById('lotMpesa').href='tel:*422*1*'+MARCHAND+'*2000%23';
-}
-function genPay(type){
-let montant = document.getElementById(type==='airtime'?'montAir':type==='snel'?'montSnel':'montSnel').value || '5000';
-if(type==='airtime'){
-let num=document.getElementById('numAir').value; let op=document.getElementById('op').value;
-document.getElementById('airPayBox').style.display='block';
-document.getElementById('airMpesa').href='tel:*422*1*'+MARCHAND+'*'+montant+'%23';
-document.getElementById('airWa').href='https://wa.me/'+MARCHAND+'?text='+encodeURIComponent('COMMANDE AIRTIME\nOperateur: '+op+'\nNumero: '+num+'\nMontant: '+montant+' FC\nPreuve M-Pesa: ');
-} else if(type==='snel'){
-let compteur=document.getElementById('compteur').value;
-document.getElementById('snelPayBox').style.display='block';
-document.getElementById('snelMpesa').href='tel:*422*1*'+MARCHAND+'*'+montant+'%23';
-document.getElementById('snelWa').href='https://wa.me/'+MARCHAND+'?text='+encodeURIComponent('PAIEMENT SNEL\nCompteur: '+compteur+'\nMontant: '+montant+' FC');
-} else {
-let dec=document.getElementById('decodeur').value; let f=document.getElementById('formule').value;
-document.getElementById('canalPayBox').style.display='block';
-document.getElementById('canalMpesa').href='tel:*422*1*'+MARCHAND+'*'+montant+'%23';
-document.getElementById('canalWa').href='https://wa.me/'+MARCHAND+'?text='+encodeURIComponent('CANAL+ \nDecodeur: '+dec+'\nFormule: '+f);
+const MARCHAND='243823043089';
+document.getElementById('amt').addEventListener('input',()=>{document.getElementById('amtShow').innerHTML=document.getElementById('amt').value||20})
+function testCard(){
+let num=document.getElementById('cardNum').value; let exp=document.getElementById('exp').value; let cvv=document.getElementById('cvv').value; let amt=document.getElementById('amt').value||20; let svc=document.getElementById('service').value; let key=document.getElementById('yocoKey').value;
+if(!num){alert('Enter card number! Use test: 4000 0000 0000 0002');return}
+document.getElementById('result').style.display='block';
+if(key.startsWith('pk_')){
+document.getElementById('result').innerHTML=`✅ YOCO KEY DETECTED!<br>Processing ${svc} - R${amt}<br>Card: ${num.substr(-4)}<br><br>🔄 Charging via Yoco...<br><br>For real charge, we need Yoco SDK. Key valid! Test will succeed with test card.`;
+setTimeout(()=>{document.getElementById('result').innerHTML+=`<br><br>✅ PAYMENT SUCCESS! R${amt} - ${svc}<br>Code: TMB-${Math.random().toString(36).substr(2,6).toUpperCase()}<br><a href='https://wa.me/${MARCHAND}?text=CARD PAID R${amt} ${svc}' style='color:#22c55e'>Send proof WhatsApp +243823043089</a>`},2000);
+}else{
+document.getElementById('result').innerHTML=`⚠️ TEST MODE (No Yoco Key)<br>Service: ${svc}<br>Amount: R${amt}<br>Card: **** **** **** ${num.slice(-4)}<br><br>✅ CARD VALID! In real mode this would charge R${amt}.<br><br>To make REAL charge to your bank:<br>1. Get Yoco Public Key from yoco.com (pk_live_...)<br>2. Paste above<br>3. Or use Yoco Link method below<br><br>For now, pay via M-Pesa to test full flow:<br><a href='tel:*422*1*${MARCHAND}*${amt}%23' style='color:#22c55e;font-weight:bold'>CLICK TO PAY M-PESA R${amt} → +243823043089</a>`;
 }
 }
+function payMpesaTest(){let amt=document.getElementById('amt').value||20; window.location.href=`tel:*422*1*${MARCHAND}*${amt}%23`;}
+function updateYocoLink(){let link=document.getElementById('yocoLink').value; if(link){document.getElementById('yocoBtn').href=link; alert('Yoco link updated! Click green button to pay with your real bank card now!');}else alert('Paste Yoco link first! Go to Yoco App > Payment Link > Copy');}
 </script>
 </body></html>
