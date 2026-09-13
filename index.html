@@ -2,112 +2,100 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tia Muke Zwa Ebele</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#eef2f7;padding-bottom:90px}
-.header{background:#0d2a54;color:#fff;padding:16px}
-.card{background:#fff;margin:10px;border-radius:14px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.btn{width:100%;padding:12px;border:none;border-radius:10px;font-weight:800;font-size:12px;cursor:pointer;margin:3px 0;display:block;text-align:center;text-decoration:none}
-.btn-y{background:#ffcc00;color:#0d2a54}
-.btn-b{background:#0d2a54;color:#fff}
-.btn-g{background:#f1f5f9;color:#0d2a54;border:1px solid #e2e8f0}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.full{grid-column:1/3}
-input,select{width:100%;padding:11px;border:1px solid #ddd;border-radius:8px;margin:4px 0}
+body{font-family:sans-serif;background:#f5f5f5;padding:15px;margin:0}
+.card{background:white;padding:15px;border-radius:12px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.btn{width:100%;padding:14px;border:none;border-radius:8px;font-size:16px;font-weight:bold;margin-top:10px}
+.btn-y{background:#ffcc00;color:#000}
+.btn-g{background:#0d2a54;color:white}
+input,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;box-sizing:border-box;font-size:15px}
+label{font-weight:bold;font-size:14px;margin-top:8px;display:block}
+h2{color:#0d2a54;text-align:center}
+h3{margin-top:0;color:#0d2a54}
 </style>
 </head>
 <body>
-<div class="header">
-<div style="display:flex;gap:10px;align-items:center">
-<div style="width:40px;height:40px;background:#ffcc00;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#0d2a54">T</div>
-<div><b>Tia Muke Zwa Ebele</b><br><small>SA & DRC Super App - LIVE</small></div>
-</div>
-<div style="font-size:32px;font-weight:900;margin:10px 0">R 1,240.50</div>
-<small>CDF 856,000 - Referral R185</small>
-</div>
 
-<div class="card"><b>🎰 1. LOTTERY - Jackpot R50,000 - Ticket R20</b>
-<div class="grid" style="margin-top:8px">
-<a class="btn btn-y" href="#" onclick="return go('Lottery Ticket R20')">🎟️ Buy Ticket R20</a>
-<a class="btn btn-b" href="#" onclick="return go('5 Lottery Tickets R100')">🔥 5 Tickets R100</a>
-</div></div>
+<h2>Tia Muke Zwa Ebele 🇨🇩</h2>
 
-<div class="card"><b>💳 2. PAYMENTS</b>
-<div class="grid" style="margin-top:8px">
-<a class="btn btn-b" href="#" onclick="return go('Yoco Capitec SA payment')">Yoco Capitec SA</a>
-<a class="btn btn-g" href="#" onclick="return go('M-Pesa DRC payment')">M-Pesa DRC</a>
-<a class="btn btn-g" href="#" onclick="return go('Visa Mastercard payment')">Visa / Mastercard</a>
-<a class="btn btn-g" href="#" onclick="return go('Bank EFT payment')">Bank</a>
-</div></div>
-
-<div class="card"><b>🎫 3. BETTING</b>
-<div class="grid" style="margin-top:8px">
-<a class="btn btn-g" href="#" onclick="return go('Betway voucher')">Betway</a>
-<a class="btn btn-g" href="#" onclick="return go('1xBet voucher')">1xBet</a>
-<a class="btn btn-g" href="#" onclick="return go('Hollywoodbets voucher')">Hollywoodbets</a>
-<a class="btn btn-g" href="#" onclick="return go('1Voucher')">1Voucher</a>
-</div></div>
-
-<div class="card"><b>🎬 4. ENTERTAINMENT</b>
-<div class="grid" style="margin-top:8px">
-<a class="btn btn-g" href="#" onclick="return go('Netflix')">Netflix</a>
-<a class="btn btn-g" href="#" onclick="return go('Showmax')">Showmax</a>
-<a class="btn btn-g" href="#" onclick="return go('Spotify')">Spotify</a>
-<a class="btn btn-g" href="#" onclick="return go('Google Play')">Google Play</a>
-</div>
-<a class="btn btn-b full" href="#" onclick="return go('Canal+ or DSTV subscription')" style="margin-top:6px">Canal+ Congo / DSTV</a>
+<div class="card">
+<h3>📱 Buy Airtime</h3>
+<label>Network</label>
+<select id="net">
+<option>Vodacom DRC</option>
+<option>Airtel DRC</option>
+<option>Orange DRC</option>
+<option>Africell</option>
+</select>
+<label style="margin-top:8px">Phone</label>
+<input id="phone" placeholder="+243..." />
+<label style="margin-top:8px">Amount R</label>
+<input id="amount" type="number" placeholder="100" />
+<button class="btn btn-y" onclick="return goAirtime()">BUY AIRTIME</button>
 </div>
 
-<div class="card"><b>📱 5. AIRTIME & DATA - SA & Congo</b>
-<select id="net"><option>Vodacom SA</option><option>MTN SA</option><option>Telkom</option><option>Cell C</option><option>Orange DRC</option><option>Vodacom Congo</option><option>Airtel DRC</option><option>Africell DRC</option></select>
-<input id="phone" placeholder="Phone number 082... or +243...">
-<input id="amount" type="number" placeholder="Amount R10 - R1000">
-<a class="btn btn-y full" href="#" onclick="return goAirtime()">⚡ Buy Airtime Instant</a>
+<div class="card">
+<h3>💸 Send Money SA</h3>
+<label>Recipient Phone</label>
+<input id="recv" placeholder="082..." />
+<label style="margin-top:8px">Amount R</label>
+<input id="sendamt" type="number" placeholder="500" />
+<button class="btn btn-y" onclick="return goMoney()">SEND MONEY</button>
 </div>
 
-<div class="card" style="border:2px solid #0d2a54"><b>💸 6. SEND & RECEIVE MONEY WORLDWIDE</b><br><small>Send SA/Congo → World - Receive World → SA/Congo</small>
-<input id="recv" placeholder="Recipient M-Pesa / Bank / Visa">
-<input id="sendamt" type="number" placeholder="Amount to send">
-<a class="btn btn-b full" href="#" onclick="return goMoney()" style="margin-top:6px">🌍 Send Money Now - Fee R20</a>
-</div>
-
-<div class="card"><b>👤 7. USER ACCOUNT</b>
-<div class="grid" style="margin-top:8px">
-<a class="btn btn-g" href="#" onclick="alert('Login: Phone OTP coming soon');return false">Login</a>
-<a class="btn btn-g" href="#" onclick="alert('Wallet: R1,240.50 / CDF 856,000');return false">Wallet</a>
-<a class="btn btn-g" href="#" onclick="alert('History: All transactions');return false">History</a>
-<a class="btn btn-b" href="#" onclick="return go('Referral Bonus R50 per friend')">Referral Bonus</a>
-</div>
+<div class="card" style="border:2px solid green;background:#f0fff0">
+<h3>🇨🇩 Send to Congo TODAY - Real Money</h3>
+<label>Mama Phone DRC</label>
+<input id="mamaPhone" placeholder="+243815..." />
+<label style="margin-top:8px">Amount in Rands</label>
+<input id="congoAmount" type="number" placeholder="1000" />
+<label style="margin-top:8px">Receive Method</label>
+<select id="method">
+<option>Airtel Money DRC</option>
+<option>Vodacom M-Pesa DRC</option>
+<option>Orange Money</option>
+<option>Cash Pickup</option>
+</select>
+<button class="btn btn-g" onclick="return goCongo()">🇨🇩 SEND TO CONGO NOW</button>
+<p style="font-size:12px;color:green;margin-top:8px">✅ Mama gets $ in 10 mins via Airtel/Vodacom</p>
 </div>
 
 <script>
-var MY_NUMBER = "27817070456";
-function go(p){
-var ph=document.getElementById('phone')?document.getElementById('phone').value:'';
-var am=document.getElementById('amount')?document.getElementById('amount').value:'';
-var msg="Hi Tia Muke! I want: "+p+(am?" - R"+am:"")+(ph?" - Phone: "+ph:"")+" - From https://blackdolph12.github.io";
-window.location.href="https://wa.me/"+MY_NUMBER+"?text="+encodeURIComponent(msg);
-return false;
-}
+var MY_NUMBER="27754665536"; // PUT YOUR WHATSAPP NUMBER HERE 27... no +
+
 function goAirtime(){
 var net=document.getElementById('net').value;
 var ph=document.getElementById('phone').value;
 var am=document.getElementById('amount').value;
 if(!ph||!am){alert("Enter phone and amount");return false;}
-var msg="Hi Tia Muke! Buy Airtime: "+net+" - Phone: "+ph+" - R"+am;
+var msg="Hi Tia Muke! Buy Airtime: "+net+" - Phone: "+ph+" - Amount: R"+am;
 window.location.href="https://wa.me/"+MY_NUMBER+"?text="+encodeURIComponent(msg);
 return false;
 }
+
 function goMoney(){
 var recv=document.getElementById('recv').value;
 var amt=document.getElementById('sendamt').value;
 if(!recv||!amt){alert("Enter recipient and amount");return false;}
-var msg="Hi Tia Muke! Send Money: To "+recv+" - R"+amt;
+var msg="Hi Tia Muke! Send Money: To "+recv+" - Amount: R"+amt;
+window.location.href="https://wa.me/"+MY_NUMBER+"?text="+encodeURIComponent(msg);
+return false;
+}
+
+function goCongo(){
+var mama=document.getElementById('mamaPhone').value;
+var amt=document.getElementById('congoAmount').value;
+var method=document.getElementById('method').value;
+if(!mama||!amt){alert("Enter mama phone and amount");return false;}
+var orderID="TIA"+Date.now();
+var usd=(amt/19.5).toFixed(2);
+var msg="🇨🇩 CONGO ORDER "+orderID+" - To: "+mama+" - R"+amt+" ($"+usd+") - Method: "+method+" - Capitec Ref: "+orderID+" - Client will EFT now";
 window.location.href="https://wa.me/"+MY_NUMBER+"?text="+encodeURIComponent(msg);
 return false;
 }
 </script>
+
 </body>
 </html>
