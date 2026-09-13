@@ -3,72 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tia Muke Zwa Ebele</title>
+<title>Tia Muke - Trading Academy</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,sans-serif;background:#f2f4f7}
-#pinScreen{position:fixed;top:0;left:0;right:0;bottom:0;background:#0d2a54;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
-.pinBox{background:white;border-radius:20px;padding:25px;width:100%;max-width:340px;text-align:center}
-.pinInput{font-size:28px;letter-spacing:12px;text-align:center;font-weight:800;padding:14px!important;width:100%;border:2px solid #0d2a54;border-radius:10px}
-.header{background:#0d2a54;color:white;padding:18px;text-align:center}
-.container{padding:12px;max-width:520px;margin:0 auto}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:white;border-radius:14px;padding:14px;box-shadow:0 3px 10px rgba(0,0,0,0.06);text-align:center}
-.card-big{grid-column:span 2;text-align:left;border:2px solid #00a651;background:linear-gradient(135deg,#f0fff4,#fff)}
-.card h3{margin:6px 0 2px 0;font-size:12px}
+body{margin:0;font-family:-apple-system,sans-serif;background:#f5f5f5}
+#pinScreen{position:fixed;top:0;left:0;right:0;bottom:0;background:#0b79bf;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
+.pinBox{background:white;border-radius:12px;padding:25px;width:100%;max-width:340px;text-align:center}
+.pinInput{font-size:28px;letter-spacing:12px;text-align:center;font-weight:800;padding:14px;width:100%;border:2px solid #0b79bf;border-radius:8px}
+.takealot-header{background:#0b79bf;color:white;padding:10px 12px;position:sticky;top:0;z-index:10}
+.top-row{display:flex;align-items:center;gap:10px}
+.logo{font-weight:900;font-size:20px}
+.search{flex:1;background:white;border-radius:20px;display:flex;align-items:center;padding:8px 14px;color:#999;font-size:12px}
+.cart{background:#0a5a8f;border-radius:20px;padding:8px 14px;font-size:12px;font-weight:800}
+.depts{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;background:white;white-space:nowrap}
+.depts span{background:#f0f0f0;padding:6px 12px;border-radius:15px;font-size:11px;font-weight:700}
+.container{padding:10px;max-width:600px;margin:0 auto}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:white;border-radius:8px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,0.1);position:relative}
+.card h3{margin:6px 0 2px 0;font-size:11px}
+.card p{margin:0;font-size:9px;color:#666;line-height:1.3}
 .icon{font-size:26px}
-.btn{width:100%;padding:11px;border:none;border-radius:10px;font-weight:800;font-size:12px;margin-top:8px;cursor:pointer}
-.btn-y{background:#ffcc00;color:#0d2a54}
-.btn-b{background:#0d2a54;color:white}
-.btn-g{background:#00a651;color:white}
-.btn-r{background:#e50914;color:white}
-.btn-bl{background:#1a4cff;color:white}
-input,select{width:100%;padding:11px;border:1.5px solid #e5e7eb;border-radius:9px;font-size:13px;margin-top:6px;background:#f9fafb}
+.btn{width:100%;padding:8px;border:none;border-radius:6px;font-weight:800;font-size:10px;margin-top:8px;cursor:pointer}
+.btn-blue{background:#0b79bf;color:white}
+.btn-yellow{background:#ffbe00;color:#000}
+.btn-green{background:#00a651;color:white}
+.badge{position:absolute;top:8px;right:8px;color:white;font-size:7px;padding:3px 6px;border-radius:4px;font-weight:800}
 .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:20;padding:20px}
-.modal-box{background:white;border-radius:16px;padding:18px;max-width:400px;margin:40px auto}
-.badge{font-size:8px;background:#00a651;color:white;padding:2px 6px;border-radius:10px}
+.modal-box{background:white;border-radius:12px;padding:18px;max-width:400px;margin:40px auto}
+input,select{width:100%;padding:11px;border:1.5px solid #ddd;border-radius:6px;margin-top:6px}
+.trading-big{grid-column:span 2;background:linear-gradient(135deg,#0b79bf,#001f3f);color:white}
+.trading-big h3{color:white}
+.trading-big p{color:#cce5ff}
 </style>
 </head>
 <body>
 
 <div id="pinScreen">
 <div class="pinBox">
-<div style="font-size:40px">🔒</div>
-<h2 style="margin:5px 0;color:#0d2a54">Tia Muke Zwa Ebele</h2>
-<p style="font-size:12px;color:#666;margin:0 0 15px 0">Enter PIN to Login<br>0754665536</p>
+<div style="font-size:36px">🔒</div>
+<h2 style="margin:5px 0;color:#0b79bf">Tia Muke Market</h2>
+<p style="font-size:11px;color:#666">8-in-1 • Trading Academy</p>
 <input id="pinInput" class="pinInput" type="password" maxlength="4" placeholder="••••" inputmode="numeric" />
-<button class="btn btn-b" onclick="checkPin()" style="margin-top:15px;padding:14px;font-size:15px">LOGIN • PIN 1999</button>
+<button class="btn btn-blue" onclick="checkPin()" style="margin-top:15px;padding:12px;font-size:14px;border-radius:20px">LOGIN</button>
 <p id="pinMsg" style="font-size:11px;color:red;margin-top:10px;display:none"></p>
 </div>
 </div>
 
-<div class="header">
-<h1>Tia Muke Zwa Ebele 🇨🇩</h1>
-<p>0754665536 • <span onclick="logout()" style="text-decoration:underline;cursor:pointer">Logout</span></p>
+<div class="takealot-header">
+<div class="top-row">
+<div class="logo">tia muke</div>
+<div class="search">🔍 Search trading, lottery...</div>
+<div class="cart">🛒 0</div>
+</div>
+</div>
+
+<div class="depts">
+<span>🔥 All</span><span>📈 Trading Academy</span><span>🎰 Lottery</span><span>💳 Payments</span><span>🎫 Betting</span><span>🎬 Netflix</span><span>📱 Airtime</span><span>💸 Send Money</span><span>👤 Account</span>
 </div>
 
 <div class="container">
+<p style="font-size:13px;font-weight:800;margin:5px 0 10px 0">8-in-1 Market + Trading Academy 📈</p>
+
 <div class="grid">
 
-<div class="card" onclick="openService('airtime-drc')"><div class="icon">📱</div><h3>Airtime DRC</h3><button class="btn btn-y">Buy</button></div>
-<div class="card" onclick="openService('data-drc')"><div class="icon">🌐</div><h3>Data DRC</h3><button class="btn btn-y">Buy</button></div>
-<div class="card" onclick="openService('netflix')"><div class="icon">🎬</div><h3>Netflix</h3><button class="btn btn-r">Voucher</button></div>
-<div class="card" onclick="openService('1xbet')"><div class="icon">⚽</div><h3>1xBet</h3><button class="btn btn-bl">Voucher</button></div>
-<div class="card" onclick="openService('snel')"><div class="icon">💡</div><h3>Electricity</h3><button class="btn btn-y">SNEL</button></div>
-<div class="card" onclick="openService('canal')"><div class="icon">📺</div><h3>Canal+</h3><button class="btn btn-y">Pay</button></div>
-<div class="card" onclick="openService('money-sa')"><div class="icon">💸</div><h3>Money SA</h3><button class="btn btn-b">Send</button></div>
-<div class="card card-big" onclick="openService('congo')"><div style="display:flex;justify-content:space-between"><div><div class="icon">🇨🇩</div><h3>Send to Congo <span class="badge">10 MINS</span></h3></div><div style="font-size:28px">→</div></div><button class="btn btn-g">🇨🇩 SEND TO CONGO TODAY</button></div>
+<div class="card trading-big" onclick="openService('trading-academy')">
+<div class="badge" style="background:#ffbe00;color:#000">NEW 🔥</div>
+<div class="icon">📈</div>
+<h3>1. TRADING ACADEMY</h3>
+<p>Forex • Crypto • Stocks<br>Signals • Courses • Mentorship<br><b>Learn to Trade & Earn</b></p>
+<button class="btn btn-yellow">JOIN ACADEMY</button>
+</div>
+
+<div class="card" onclick="openService('lottery')">
+<div class="badge" style="background:#e40000">R50K</div>
+<div class="icon">🎰</div>
+<h3>2. LOTTERY</h3>
+<p>Jackpot R50K<br>Ticket R20</p>
+<button class="btn btn-yellow">Play</button>
+</div>
+
+<div class="card" onclick="openService('payments')">
+<div class="icon">💳</div>
+<h3>3. PAYMENTS</h3>
+<p>Yoco • M-Pesa<br>Visa • Capitec</p>
+<button class="btn btn-blue">Pay</button>
+</div>
+
+<div class="card" onclick="openService('betting')">
+<div class="badge" style="background:#e40000">HOT</div>
+<div class="icon">🎫</div>
+<h3>4. BETTING</h3>
+<p>1xBet • Betway<br>Hollywood</p>
+<button class="btn btn-yellow">Voucher</button>
+</div>
+
+<div class="card" onclick="openService('entertainment')">
+<div class="icon">🎬</div>
+<h3>5. ENTERTAINMENT</h3>
+<p>Netflix • Showmax<br>Canal+ • Spotify</p>
+<button class="btn btn-blue">Get Code</button>
+</div>
+
+<div class="card" onclick="openService('airtime')">
+<div class="icon">📱</div>
+<h3>6. AIRTIME</h3>
+<p>SA & DRC<br>Vodacom • Airtel</p>
+<button class="btn btn-blue">Buy</button>
+</div>
+
+<div class="card" onclick="openService('money')">
+<div class="badge" style="background:#00a651">WORLD</div>
+<div class="icon">💸</div>
+<h3>7. SEND MONEY</h3>
+<p>SA ↔ Congo ↔ World</p>
+<button class="btn btn-green">Send</button>
+</div>
+
+<div class="card" onclick="openService('business')">
+<div class="icon">🏢</div>
+<h3>8. BUSINESS</h3>
+<p>CIPC • RCCM<br>Account • Wallet</p>
+<button class="btn btn-blue">Open</button>
+</div>
 
 </div>
 </div>
 
 <div id="modal" class="modal" onclick="closeModal()">
 <div class="modal-box" onclick="event.stopPropagation()">
-<h3 id="modalTitle">Order</h3>
-<input id="input1" placeholder="Phone +243..." />
-<input id="input2" type="number" placeholder="Amount R 1000" style="margin-top:8px" />
-<select id="input3" style="margin-top:8px"><option>R100</option><option>R200</option><option>R500</option><option>R1000</option></select>
-<button class="btn btn-g" onclick="sendNow()">CONFIRM • 0754665536</button>
+<h3 id="modalTitle">Trading Academy</h3>
+<div id="tradingOptions" style="display:none">
+<p style="font-size:12px">Choose your Trading Package:</p>
+<button class="btn btn-yellow" style="margin-top:6px;padding:12px" onclick="selectTrade('Beginner - R250 - Forex Basics')">📘 Beginner - R250</button>
+<button class="btn btn-blue" style="margin-top:6px;padding:12px" onclick="selectTrade('Pro - R500 - Signals + Course')">📗 Pro - R500 - Signals</button>
+<button class="btn btn-green" style="margin-top:6px;padding:12px" onclick="selectTrade('VIP - R1000 - 1-on-1 Mentorship')">📕 VIP - R1000 - Mentorship</button>
+</div>
+<div id="normalOptions">
+<input id="input1" placeholder="Phone / ID" />
+<input id="input2" type="number" placeholder="Amount R" style="margin-top:8px" />
+<select id="input3" style="margin-top:8px"><option>R100</option><option>R250</option><option>R500</option><option>R1000</option></select>
+</div>
+<button class="btn btn-green" style="padding:12px;margin-top:10px" onclick="sendNow()">CONFIRM • 0754665536</button>
 <button class="btn" style="background:#eee" onclick="closeModal()">Cancel</button>
 </div>
 </div>
@@ -77,32 +152,38 @@ input,select{width:100%;padding:11px;border:1.5px solid #e5e7eb;border-radius:9p
 var MY_NUMBER="27754665536";
 var MY_PIN="1999";
 var currentService="";
-
+var selectedPackage="";
 function checkPin(){
-var entered=document.getElementById('pinInput').value;
-var msg=document.getElementById('pinMsg');
-if(entered==MY_PIN){
-localStorage.setItem("tia_logged","yes");
-document.getElementById('pinScreen').style.display="none";
-}else{
-msg.style.display="block";
-msg.innerText="Wrong PIN! Your PIN is 1999";
-document.getElementById('pinInput').value="";
+var e=document.getElementById('pinInput').value;
+var m=document.getElementById('pinMsg');
+if(e==MY_PIN){localStorage.setItem("tia_logged","yes");document.getElementById('pinScreen').style.display="none";}
+else{m.style.display="block";m.innerText="Wrong PIN!";document.getElementById('pinInput').value="";}
 }
-}
-function logout(){localStorage.removeItem("tia_logged");location.reload();}
 if(localStorage.getItem("tia_logged")=="yes"){document.getElementById('pinScreen').style.display="none";}
 document.getElementById('pinInput').addEventListener('keyup',function(e){if(e.key==='Enter') checkPin();});
-
-function openService(s){currentService=s;document.getElementById('modal').style.display="block";document.getElementById('modalTitle').innerText=s.toUpperCase()+" - PIN 1999 Verified";}
+function openService(s){
+currentService=s;
+document.getElementById('modal').style.display="block";
+document.getElementById('modalTitle').innerText=s.toUpperCase();
+if(s=='trading-academy'){
+document.getElementById('tradingOptions').style.display="block";
+document.getElementById('normalOptions').style.display="none";
+document.getElementById('modalTitle').innerText="📈 TRADING ACADEMY";
+}else{
+document.getElementById('tradingOptions').style.display="none";
+document.getElementById('normalOptions').style.display="block";
+}
+}
+function selectTrade(p){selectedPackage=p;document.getElementById('input3').innerHTML="<option>"+p+"</option>";document.getElementById('tradingOptions').style.display="none";document.getElementById('normalOptions').style.display="block";}
 function closeModal(){document.getElementById('modal').style.display="none";}
 function sendNow(){
 var ph=document.getElementById('input1').value;
 var amt=document.getElementById('input2').value;
 var opt=document.getElementById('input3').value;
-if(!ph||!amt){alert("Enter phone and amount");return;}
-var orderID="TIA"+Date.now().toString().slice(-6);
-var msg="ORDER "+orderID+" - "+currentService.toUpperCase()+"\nTo: "+ph+"\nR"+amt+" "+opt+"\nPIN: 1999 OK\nRef: "+orderID;
+if(currentService=='trading-academy' &&!ph){ph="Trading Student"; amt=opt.match(/R(\d+)/)?.[1]||"500";}
+if(!ph||!amt){alert("Enter details");return;}
+var id="TIA"+Date.now().toString().slice(-6);
+var msg="📈 TIA MUKE ORDER "+id+"\nDept: "+currentService.toUpperCase()+"\nTo: "+ph+"\nAmount: R"+amt+"\nPackage: "+opt+"\n"+selectedPackage+"\nRef: "+id;
 window.location.href="https://wa.me/"+MY_NUMBER+"?text="+encodeURIComponent(msg);
 }
 </script>
