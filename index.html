@@ -1,74 +1,33 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tia Muke Zwa Ebele</title>
-<style>*{box-sizing:border-box}body{margin:0;font-family:sans-serif;background:#f0f0f0}
-#pinScreen{position:fixed;inset:0;background:#0b79bf;z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white}
-.pinBox{background:white;border-radius:12px;padding:20px;width:85%;max-width:320px;text-align:center}
-.pinInput{font-size:28px;letter-spacing:12px;text-align:center;width:100%;padding:12px;border:2px solid #0b79bf;border-radius:8px}
-.takealot-header{background:#0b79bf;color:white;padding:8px 10px;position:sticky;top:0;z-index:10}
-.top-row{display:flex;align-items:center;gap:10px}
-.logo{font-weight:900;font-size:16px;line-height:1.1}.logo span{color:#ffbe00}
-.search{flex:1;background:white;border-radius:20px;padding:8px 12px;color:#999;font-size:13px}
-.depts{display:flex;gap:8px;overflow-x:auto;padding:8px 10px;background:white}
-.depts span{background:#f0f0f0;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:700}
-.container{padding:10px;max-width:600px;margin:0 auto}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.card{background:white;border-radius:12px;padding:12px;position:relative;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-.card h3{margin:6px 0 2px;font-size:13px}.card p{margin:0;font-size:10px;color:#666}
-.btn{width:100%;padding:10px;border:none;border-radius:20px;font-weight:800;margin-top:8px;font-size:12px}
-.btn-blue{background:#0b79bf;color:white}.btn-yellow{background:#ffbe00;color:#000}
-.btn-green{background:#00a651;color:white}.btn-red{background:#e40000;color:white}
-.badge{position:absolute;top:8px;right:8px;color:white;font-size:8px;padding:3px 6px;border-radius:10px;font-weight:900}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20;align-items:center;justify-content:center}
-.modal-box{background:white;border-radius:12px;padding:16px;width:90%;max-width:360px}
-input,select{width:100%;padding:11px;border:1.5px solid #ddd;border-radius:8px;margin-top:8px}
-.trading-big{grid-column:span 2;background:linear-gradient(135deg,#0b79bf,#00a651);color:white}
-</style></head><body>
-
-<div id="pinScreen"><div class="pinBox">
-<div style="font-weight:900;color:#0b79bf;font-size:20px">Tia Muke</div>
-<div style="color:#00a651;font-size:12px;letter-spacing:2px;font-weight:700">ZWA EBELE</div>
-<p style="color:#333;font-size:12px;margin:10px 0">Enter PIN</p>
-<input id="pin" class="pinInput" type="password" maxlength="4" placeholder="••••">
-<button onclick="checkPin()" class="btn btn-blue" style="margin-top:12px">UNLOCK</button>
-<p id="pinMsg" style="color:red;font-size:11px"></p>
-</div></div>
-
-<div class="takealot-header"><div class="top-row">
-<div class="logo">Tia Muke<br><span>Zwa Ebele</span></div><div class="search">🔍 Search 8-in-1 market...</div>
-</div></div>
-<div class="depts"><span>📈 Trading</span><span>🎰 Lottery</span><span>💳 Payments</span><span>⚽ Betting</span><span>🎬 Movies</span><span>📱 Airtime</span><span>💸 M-Pesa</span><span>🏦 Business</span></div>
-
-<div class="container"><div class="grid">
-<div class="card trading-big"><div style="font-size:28px">📈</div><h3>1. Trading Academy</h3><p style="color:#cce5ff">Learn trading like pro! R299/month</p><button class="btn btn-yellow" onclick="openModal('trading')">JOIN NOW</button></div>
-<div class="card"><div style="font-size:28px">🎰</div><h3>2. Lottery R50K</h3><p>Win daily jackpot!</p><button class="btn btn-blue" onclick="openModal('lotto')">PLAY R10</button></div>
-<div class="card"><div style="font-size:28px">💳</div><h3>3. Pay Bills</h3><p>DSTV, Municipality</p><button class="btn btn-blue" onclick="openModal('bills')">PAY NOW</button></div>
-<div class="card"><div style="font-size:28px">⚽</div><h3>4. Betting</h3><p>World Cup odds</p><button class="btn btn-green" onclick="openModal('bet')">BET R20</button></div>
-<div class="card"><div style="font-size:28px">🎬</div><h3>5. Entertainment</h3><p>Movies & Music</p><button class="btn btn-blue" onclick="openModal('ent')">WATCH</button></div>
-<div class="card"><div style="font-size:28px">📱</div><h3>6. Airtime</h3><p>All networks</p><button class="btn btn-blue" onclick="openModal('airtime')">BUY</button></div>
-<div class="card" style="border:2px solid #e40000"><div style="font-size:28px">💸</div><h3>7. Send to M-Pesa</h3><p>Linked to your M-Pesa</p><button class="btn btn-red" onclick="openModal('mpesa')">SEND MONEY</button></div>
-<div class="card"><div style="font-size:28px">🏦</div><h3>8. Business</h3><p>My sales & wallet</p><button class="btn btn-blue" onclick="openModal('biz')">OPEN</button></div>
-</div></div>
-
-<div id="modal" class="modal" onclick="if(event.target==this)closeModal()"><div class="modal-box" id="modalBox"></div></div>
-
-<script>
-var MY_WA="27754665536";
-function checkPin(){var p=document.getElementById('pin').value;if(p=="2007"){document.getElementById('pinScreen').style.display='none';}else{document.getElementById('pinMsg').innerText="Wrong PIN! Use 2007";}}
-function openModal(type){
-var box=document.getElementById('modalBox');document.getElementById('modal').style.display='flex';
-if(type=='trading'){box.innerHTML="<h3>📈 Trading Academy</h3><p>Video lessons</p><button class='btn btn-yellow' onclick=\"window.open('https://youtube.com/results?search_query=trading+academy','_blank')\">▶️ WATCH LESSONS NOW</button><button class='btn btn-blue' onclick=\"sendWA('Trading Academy R299')\">JOIN VIA WHATSAPP R299</button><br><button class='btn' onclick='closeModal()'>Close</button>";}
-else if(type=='lotto'){box.innerHTML="<h3>🎰 LOTTERY - WIN R50K!</h3><p>Pick 1 number 1-10</p><input id='lottoNum' type='number' placeholder='Pick 1-10' min='1' max='10'><button class='btn btn-blue' onclick='playLotto()'>🎲 PLAY NOW R10</button><div id='lottoResult' style='margin-top:10px;font-weight:800'></div><br><button class='btn' onclick='closeModal()'>Close</button>";}
-else if(type=='bills'){box.innerHTML="<h3>💳 Pay Bills</h3><p>Pay DSTV, Electricity</p><button class='btn btn-blue' onclick=\"window.open('https://www.capitecbank.co.za/','_blank')\">🏦 OPEN CAPITEC APP</button><button class='btn btn-yellow' onclick=\"sendWA('Pay Bill')\" >ORDER VIA WHATSAPP</button><br><button class='btn' onclick='closeModal()'>Close</button>";}
-else if(type=='bet'){box.innerHTML="<h3>⚽ BETTING - DIRECT!</h3><p>Choose:</p><button class='btn btn-green' onclick=\"window.open('https://www.hollywoodbets.net/','_blank')\">🟢 HOLLYWOODBETS</button><button class='btn' style='background:#000;color:white' onclick=\"window.open('https://www.betway.co.za/','_blank')\">⚫ BETWAY</button><button class='btn btn-blue' onclick=\"window.open('https://www.sportingbet.co.za/','_blank')\">🔵 SPORTINGBET</button><br><button class='btn' onclick='closeModal()'>Close</button>";}
-else if(type=='ent'){box.innerHTML="<h3>🎬 ENTERTAINMENT!</h3><button class='btn btn-red' onclick=\"window.open('https://www.youtube.com/','_blank')\">▶️ YOUTUBE</button><button class='btn' style='background:#000;color:white' onclick=\"window.open('https://www.netflix.com/','_blank')\">🎬 NETFLIX</button><button class='btn btn-green' onclick=\"window.open('https://open.spotify.com/','_blank')\">🎵 SPOTIFY</button><br><button class='btn' onclick='closeModal()'>Close</button>";}
-else if(type=='airtime'){box.innerHTML="<h3>📱 AIRTIME</h3><select><option>Vodacom</option><option>MTN</option><option>Vodacom DRC</option></select><input placeholder='Phone number'><select><option>R10</option><option>R50</option></select><button class='btn btn-blue' onclick=\"sendWA('Airtime')\">BUY NOW</button><br><button class='btn' onclick='closeModal()'>Close</button>";}
-else if(type=='mpesa'){box.innerHTML="<h3 style='color:#e40000'>💸 SEND TO M-PESA DRC</h3><p style='font-size:11px'>M-Pesa Balance: 0 FC</p><input id='mNum' value='+243 811 920 171'><input id='mName' value='Bony welo'><select id='mAmt'><option>R250 → $12</option><option>R500 → $27</option><option>R1000 → $55</option></select><button class='btn btn-red' onclick='copyNumber()'>📋 COPY NUMBER</button><button class='btn btn-green' onclick='sendMpesaWA()'>✅ CONFIRM WHATSAPP</button><p style='font-size:10px;color:#666;text-align:center'>1.Copy → 2.Open M-Pesa manually → 3.Paste in Envoie argent</p><br><button class='btn' onclick='closeModal()'>Close</button>";}
-else if(type=='biz'){box.innerHTML="<h3>🏦 Business Wallet</h3><p>Balance: R0.00<br>Sales today: 0</p><button class='btn btn-blue' onclick=\"sendWA('My Business Report')\">GET REPORT</button><br><button class='btn' onclick='closeModal()'>Close</button>";}
-}
-function closeModal(){document.getElementById('modal').style.display='none';}
-function sendWA(item){window.location.href="https://wa.me/"+MY_WA+"?text="+encodeURIComponent("ORDER: "+item+" from Tia Muke App");}
-function playLotto(){var pick=document.getElementById('lottoNum').value;var win=Math.floor(Math.random()*10)+1;var res=document.getElementById('lottoResult');if(pick==win){res.innerHTML="🎉 YOU WIN! Number was "+win+"!";res.style.color="green";sendWA('LOTTERY WIN! Picked '+pick);}else{res.innerHTML="😢 Picked "+pick+" but was "+win+". Try again!";res.style.color="red";}}
-function copyNumber(){var num=document.getElementById('mNum').value;navigator.clipboard.writeText(num);alert("✅ COPIED: "+num+"\n\n1. Open M-Pesa app\n2. Envoie argent\n3. Paste number");}
-function sendMpesaWA(){var num=document.getElementById('mNum').value;var name=document.getElementById('mName').value;var amt=document.getElementById('mAmt').value;if(!num){alert("Enter number");return;}var msg="🔴 M-PESA DRC ORDER\nTo: "+num+"\nName: "+name+"\nAmount: "+amt+"\nFrom Tia Muke App";window.location.href="https://wa.me/"+MY_WA+"?text="+encodeURIComponent(msg);}
-</script>
-</body></html>
+<style>
+body{margin:0;font-family:sans-serif;background:#f0f0f0}
+.header{background:#0b79bf;color:white;padding:12px;font-weight:900}
+.header span{color:#ffbe00}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;max-width:500px;margin:auto}
+.card{background:white;border-radius:12px;padding:14px;text-align:center;box-shadow:0 2px 4px #0001}
+.btn{width:100%;padding:12px;border:none;border-radius:25px;font-weight:800;margin-top:8px}
+.blue{background:#0b79bf;color:white}
+.yellow{background:#ffbe00}
+.green{background:#00a651;color:white}
+.red{background:#e40000;color:white}
+</style>
+</head>
+<body>
+<div class="header">Tia Muke <span>Zwa Ebele</span> - 8 in 1 Market</div>
+<div class="grid">
+<div class="card"><h3>📈 Trading</h3><a href="https://youtube.com/results?search_query=trading+for+beginners"><button class="btn yellow">WATCH LESSONS</button></a><a href="https://wa.me/27754665536?text=Trading R299"><button class="btn blue">JOIN R299</button></a></div>
+<div class="card"><h3>🎰 Lottery</h3><a href="https://wa.me/27754665536?text=Lottery R10"><button class="btn blue">PLAY R10 - WIN R50K</button></a></div>
+<div class="card"><h3>⚽ Betting</h3><a href="https://www.hollywoodbets.net" target="_blank"><button class="btn green">OPEN HOLLYWOODBETS</button></a><a href="https://www.betway.co.za" target="_blank"><button class="btn blue">OPEN BETWAY</button></a></div>
+<div class="card"><h3>🎬 Movies</h3><a href="https://www.youtube.com" target="_blank"><button class="btn red">YOUTUBE</button></a><a href="https://www.netflix.com" target="_blank"><button class="btn blue">NETFLIX</button></a></div>
+<div class="card"><h3>💳 Bills</h3><a href="https://www.capitecbank.co.za" target="_blank"><button class="btn blue">PAY WITH CAPITEC</button></a></div>
+<div class="card"><h3>📱 Airtime</h3><a href="https://wa.me/27754665536?text=Airtime"><button class="btn blue">BUY AIRTIME</button></a></div>
+<div class="card" style="border:2px solid red"><h3>💸 M-Pesa DRC</h3><p style="font-size:12px">Bony welo<br>+243 811 920 171</p><button class="btn red" onclick="navigator.clipboard.writeText('+243811920171');alert('COPIED! Now open M-Pesa app and paste in Envoie argent')">COPY NUMBER</button><a href="https://wa.me/27754665536?text=M-Pesa Order To Bony +243811920171 R250"><button class="btn green">CONFIRM WHATSAPP</button></a></div>
+<div class="card"><h3>🏦 Business</h3><p>Balance: R0.00</p><a href="https://wa.me/27754665536?text=Business report"><button class="btn blue">REPORT</button></a></div>
+</div>
+</body>
+</html>
